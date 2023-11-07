@@ -1,0 +1,11 @@
+[book]
+authors = ["Vitalii Perehonchuk"]
+language = "uk"
+multilingual = false
+src = "../content/files/uk"
+title = "WebDoky 3"
+
+[build]
+create-missing = false
+
+[preprocessor.autosummary]
