@@ -1,3 +1,9 @@
 [submodule "content"]
 	path = content
 	url = git@github.com:webdoky/content.git
+[submodule "interactive-examples"]
+	path = interactive-examples
+	url = git@github.com:webdoky/interactive-examples.git
+[submodule "original-content"]
+	path = original-content
+	url = git@github.com:mdn/content.git

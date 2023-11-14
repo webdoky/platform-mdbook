@@ -1,1 +1,15 @@
+.env
+
 book
+node_modules
+bookData.json
+contextData.json
+logs/*.log
+
+preprocessors/*
+!preprocessors/src
+postprocessors/*
+!postprocessors/src
+
+links-report.md
+missing-links-report.md

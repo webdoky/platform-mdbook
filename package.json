@@ -1,0 +1,27 @@
+{
+  "name": "platform-mdbook",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Vitalii Perehonchuk <brute18@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@webdoky/yari-ports": "^3.7.4",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "markdownlint-cli2": "^0.10.0",
+    "markdownlint-rule-search-replace": "^1.2.0",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "fix": "eslint --fix .",
+    "serve": "serve book -p 3002"
+  },
+  "type": "module"
+}

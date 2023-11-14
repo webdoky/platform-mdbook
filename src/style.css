@@ -1,0 +1,141 @@
+.wd-failed-macro,
+.wd-expunged {
+    background-color: currentColor;
+}
+
+.wd-failed-macro:hover,
+.wd-expunged:hover {
+    background-color: transparent;
+}
+
+.missing-link,
+.missing-link>.hljs {
+    color: var(--sidebar-non-existant) !important;
+}
+
+.missing-link:hover,
+.missing-link>.hljs:hover {
+    color: var(--searchbar-fg) !important;
+}
+
+a[href*="//"]::before {
+    content: "🌐";
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+.bc__table-wrapper {
+    overflow: auto;
+}
+
+.wd--interactive-example.is-tabbed-shorter-height {
+    height: 350px;
+}
+
+.wd--interactive-example {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-width: 1px;
+    border-color: var(--quote-border);
+}
+
+.wd--interactive-example.is-tabbed-standard-height {
+    height: 530px;
+}
+
+.wd--interactive-example.is-default-height {
+    height: 385px;
+}
+
+.ais-SearchBox-form {
+    font-size: 2rem;
+    height: 50px;
+}
+
+#hits {
+    overflow: auto;
+    top: 50px;
+    max-height: calc(100vh - 50px);
+    position: fixed;
+    transition: cubic-bezier(1, 0, 0, 1) 0.5s;
+    width: 100vw;
+}
+
+#hits:not(.active) {
+    max-height: 0px;
+}
+
+.ais-Hits-item,
+.ais-InfiniteHits-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0;
+}
+
+.ais-Hits-item>a,
+.ais-InfiniteHits-item>a {
+    color: currentColor;
+    padding: 1.5rem;
+    text-decoration: none;
+    width: 100%;
+}
+
+.ais-Hits-item>a:hover,
+.ais-InfiniteHits-item>a:hover {
+    text-decoration: underline;
+}
+
+#searchbox.active {
+    position: fixed;
+    right: 50px;
+    left: 0;
+    z-index: 20;
+}
+
+.close-button {
+    display: none;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 50px;
+}
+
+.close-button::before {
+    content: "×";
+    font-size: 2rem;
+    line-height: 50px;
+    text-align: center;
+}
+
+#hits.active+.close-button {
+    display: block;
+}
+
+.ais-SearchBox-form::before {
+    height: 16px;
+    width: 16px;
+}
+
+.ais-SearchBox-input {
+    padding-left: 4rem;
+}
+
+#Формальний-синтаксис+pre {
+    white-space: initial;
+}
+
+.ais-Highlight {
+    color: white;
+}
+
+.ais-Highlight-nonHighlighted {
+    background-color: transparent;
+    color: black;
+}
