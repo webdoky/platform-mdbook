@@ -8,13 +8,17 @@ import (
 	"webdoky3/preprocessors/src/run-macros/runner"
 )
 
-func runMacrosInSection(macrosRunner *runner.MacrosRunner, section *preprocessor.Section) error {
+func runMacrosInSection(registryInstance *macros.Registry, section *preprocessor.Section) error {
+	macrosRunner := runner.NewMacrosRunner(&macros.Environment{
+		Locale: "uk",
+		Path:   section.Chapter.Path,
+	}, *registryInstance)
 	section.Chapter.Content = macrosRunner.Run(section.Chapter.Content)
 	for _, subItem := range section.Chapter.SubItems {
 		if subItem.IsSeparator {
 			continue
 		}
-		err := runMacrosInSection(macrosRunner, &subItem)
+		err := runMacrosInSection(registryInstance, &subItem)
 		if err != nil {
 			return err
 		}
@@ -23,14 +27,12 @@ func runMacrosInSection(macrosRunner *runner.MacrosRunner, section *preprocessor
 }
 
 func runMacros(book *preprocessor.Book, context *preprocessor.Context) (*preprocessor.Book, error) {
-	macrosRunner := runner.NewMacrosRunner(&macros.Environment{
-		Locale: "uk",
-	}, registry.NewRegistry(book))
+	registryInstance := registry.NewRegistry(book)
 	for _, section := range book.Sections {
 		if section.IsSeparator {
 			continue
 		}
-		err := runMacrosInSection(macrosRunner, &section)
+		err := runMacrosInSection(&registryInstance, &section)
 		if err != nil {
 			return nil, err
 		}

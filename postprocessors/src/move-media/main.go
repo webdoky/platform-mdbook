@@ -40,7 +40,7 @@ func replaceInFile(filePath string, old string, new string) error {
 func processFile(path string, info os.FileInfo, err error) error {
 	// log.Println("Processing " + path)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	if info.Name() == "." || info.Name() == ".." {
 		return nil
