@@ -50,7 +50,7 @@ func fixHtmlFile(htmlFilePath string) {
 var wg sync.WaitGroup
 
 func main() {
-	log.Println("Fixing interactive examples")
+	// log.Println("Fixing interactive examples")
 	htmlFilePathsInDir := getHtmlFilesInDir(TARGET_DIR)
 	log.Println("Found " + fmt.Sprint(len(htmlFilePathsInDir)) + " html files in " + TARGET_DIR)
 	for _, htmlFilePath := range htmlFilePathsInDir {

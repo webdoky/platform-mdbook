@@ -2,56 +2,52 @@ package macros
 
 import (
 	"errors"
-	"log"
+	"html/template"
 	"strings"
 	"webdoky3/preprocessors/src/helpers"
+	renderhtml "webdoky3/preprocessors/src/helpers/render_html"
+	"webdoky3/preprocessors/src/run-macros/environment"
+	"webdoky3/preprocessors/src/run-macros/registry"
 )
 
 const BASE_SLUG = "Web/JavaScript/Reference/"
 const GLOBAL_OBJECTS = "Global_Objects"
 
-func parseJsxrefArgs(args string) (string, string, string, error) {
+func parseJsxrefArgs(args string) (string, string, string, bool, error) {
 	// Split the args string into a slice of strings
 	// using the comma as the separator
 	// (e.g., "termName,displayName" -> ["termName", "displayName"])
 	argSlice := strings.Split(args, ",")
 	var apiName, displayName, anchor string
+	var ignoreWrap bool
 	if len(argSlice) == 0 {
-		return "", "", "", errors.New("no arguments")
+		return "", "", "", false, errors.New("no arguments")
 	}
 	switch len(argSlice) {
 	case 0:
-		return "", "", "", errors.New("no arguments")
+		return "", "", "", false, errors.New("no arguments")
 	case 4:
-		ignoreWrap := helpers.UnwrapBoolean(argSlice[3])
-		if ignoreWrap {
-			displayName = helpers.UnwrapString(argSlice[1])
-			if displayName == "" {
-				displayName = apiName
-			}
-		}
+		ignoreWrap = helpers.UnwrapBoolean(argSlice[3])
 		fallthrough
 	case 3:
 		anchor = strings.TrimPrefix(helpers.UnwrapString(argSlice[2]), "#")
 		fallthrough
 	case 2:
-		if displayName == "" {
-			displayName = "<code>" + helpers.UnwrapString(argSlice[1]) + "</code>"
-		}
+		displayName = helpers.UnwrapString(argSlice[1])
 		fallthrough
 	case 1:
 		apiName = helpers.UnwrapString(argSlice[0])
-		if displayName == "" {
-			displayName = "<code>" + apiName + "</code>"
-		}
 	default:
-		return "", "", "", errors.New("too many arguments")
+		return "", "", "", false, errors.New("too many arguments")
 	}
-	return apiName, displayName, anchor, nil
+	if displayName == "" {
+		displayName = apiName
+	}
+	return apiName, displayName, anchor, ignoreWrap, nil
 }
 
-func jsxref(env *Environment, registry Registry, args string) (string, error) {
-	apiName, displayName, anchor, err := parseJsxrefArgs(args)
+func jsxref(env *environment.Environment, reg *registry.Registry, args string) (string, error) {
+	apiName, displayName, anchor, ignoreWrap, err := parseJsxrefArgs(args)
 	if err != nil {
 		return "", err
 	}
@@ -63,18 +59,28 @@ func jsxref(env *Environment, registry Registry, args string) (string, error) {
 		slug = strings.Replace(slug, ".", "/", -1)
 	}
 	var basePath string
-	if registry.HasPath(env.Locale + "/docs/" + BASE_SLUG + slug) {
+	if reg.HasPath(env.Locale + "/docs/" + BASE_SLUG + slug) {
 		basePath = localUrl
-	} else if registry.HasPath(env.Locale + "/docs/" + BASE_SLUG + GLOBAL_OBJECTS + "/" + slug) {
+	} else if reg.HasPath(env.Locale + "/docs/" + BASE_SLUG + GLOBAL_OBJECTS + "/" + slug) {
 		basePath = localUrl + GLOBAL_OBJECTS + "/"
 	} else {
 		basePath = localUrl
 	}
-	log.Printf("basePath: %s", basePath)
 	href := basePath + slug
-	log.Printf("href: %s", href)
 	if anchor != "" {
 		href += "#" + anchor
 	}
-	return "<a href=\"" + href + "\">" + displayName + "</a>", nil
+	aParams := renderhtml.AParams{
+		Href: href,
+	}
+	if ignoreWrap {
+		aParams.Text = displayName
+	} else {
+		aParams.InnerHtml = template.HTML(helpers.WrapAsCode(displayName))
+	}
+	aHtml, err := renderhtml.RenderA(&aParams)
+	if err != nil {
+		return "", err
+	}
+	return aHtml, err
 }

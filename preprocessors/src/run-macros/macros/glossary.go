@@ -5,6 +5,8 @@ import (
 	"log"
 	"strings"
 	"webdoky3/preprocessors/src/helpers"
+	"webdoky3/preprocessors/src/run-macros/environment"
+	"webdoky3/preprocessors/src/run-macros/registry"
 )
 
 func parseGlossaryArgs(args string) (string, string, error) {
@@ -35,7 +37,7 @@ func parseGlossaryArgs(args string) (string, string, error) {
 	return "", "", nil
 }
 
-func glossary(env *Environment, _ Registry, args string) (string, error) {
+func glossary(env *environment.Environment, _ *registry.Registry, args string) (string, error) {
 	termName, displayName, err := parseGlossaryArgs(args)
 	log.Printf("glossary(%s, %s)", termName, displayName)
 	if err != nil {

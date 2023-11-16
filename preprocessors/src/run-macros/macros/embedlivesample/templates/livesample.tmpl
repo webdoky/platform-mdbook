@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex, nofollow">
+        <title>{{ .Title}}</title>
+        {{range .Css}}
+            <style>
+                {{.}}
+            </style>
+        {{end}}
+    </head>
+    <body>
+        {{range .Html}}
+            {{.}}
+        {{end}}
+        {{range .Js}}
+            <script>
+                {{.}}
+            </script>
+        {{end}}
+    </body>
+</html>

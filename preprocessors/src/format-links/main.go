@@ -8,6 +8,7 @@ import (
 	"sort"
 	"strings"
 	"webdoky3/preprocessors/src/helpers"
+	renderhtml "webdoky3/preprocessors/src/helpers/render_html"
 	"webdoky3/preprocessors/src/preprocessor"
 )
 
@@ -96,14 +97,36 @@ func formatLinksInMarkdown(markdown string) string {
 	for _, match := range matches {
 		href := string(match[1])
 		checkLinkForMissing(href)
-		result = strings.ReplaceAll(result, string(match[0]), "<a class=\""+getClassForLink(href)+"\" href=\""+href+"\" title=\""+getLinkTooltip(href)+"\">")
+		aOpeningHtml, err := renderhtml.RenderAOpening(&renderhtml.AParams{
+			Class: getClassForLink(href),
+			Href:  href,
+			Title: getLinkTooltip(href),
+		})
+		if err == nil {
+			// result = strings.ReplaceAll(result, string(match[0]), "<a class=\""+getClassForLink(href)+"\" href=\""+href+"\" title=\""+getLinkTooltip(href)+"\">")
+			result = strings.ReplaceAll(result, string(match[0]), aOpeningHtml)
+		} else {
+			log.Println(err)
+		}
 	}
 	matches = MARKDOWN_LINK_REGEX.FindAllSubmatch([]byte(result), -1)
 	for _, match := range matches {
 		href := string(match[3])
 		text := string(match[2])
 		checkLinkForMissing(href)
-		result = strings.ReplaceAll(result, string(match[0]), string(match[1])+"<a class=\""+getClassForLink(href)+"\" href=\""+href+"\" title=\""+getLinkTooltip(href)+"\">"+text+"</a>")
+
+		aHtml, err := renderhtml.RenderA(&renderhtml.AParams{
+			Class: getClassForLink(href),
+			Href:  href,
+			Text:  text,
+			Title: getLinkTooltip(href),
+		})
+		if err == nil {
+			// result = strings.ReplaceAll(result, string(match[0]), string(match[1])+"<a class=\""+getClassForLink(href)+"\" href=\""+href+"\" title=\""+getLinkTooltip(href)+"\">"+text+"</a>")
+			result = strings.ReplaceAll(result, string(match[0]), string(match[1])+aHtml)
+		} else {
+			log.Println(err)
+		}
 	}
 	return result
 }

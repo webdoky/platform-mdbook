@@ -139,3 +139,11 @@ a[href*="//"]::before {
     background-color: transparent;
     color: black;
 }
+
+.sample-code-frame {
+    width: 100%;
+    max-width: 100%;
+    border-width: 1px;
+    border-color: var(--quote-border);
+    padding: 0.5rem;
+}

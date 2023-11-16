@@ -2,10 +2,11 @@ package main
 
 import (
 	"log"
+	"runtime"
 	"webdoky3/preprocessors/src/preprocessor"
 )
 
-const NUMBER_OF_WORKERS = 10
+var NUMBER_OF_WORKERS int32 = int32(runtime.NumCPU())
 
 func injectAuthorsIntoSection(section preprocessor.Section, returnChannel chan preprocessor.Section) {
 	log.Println("injectAuthorsIntoSection: " + section.Chapter.Path)
@@ -46,6 +47,7 @@ func injectAuthorsIntoSection(section preprocessor.Section, returnChannel chan p
 
 func injectAuthors(book *preprocessor.Book, context *preprocessor.Context) (*preprocessor.Book, error) {
 	// log.Println("injectAuthors")
+	log.Printf("NUMBER_OF_WORKERS: %d", NUMBER_OF_WORKERS)
 	sectionsReturnChannel := make(chan preprocessor.Section)
 	// var waitGroup sync.WaitGroup
 	// waitGroup.Add(len(book.Sections))

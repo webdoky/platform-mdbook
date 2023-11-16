@@ -3,16 +3,17 @@ package main
 import (
 	"log"
 	"webdoky3/preprocessors/src/preprocessor"
-	"webdoky3/preprocessors/src/run-macros/macros"
+	"webdoky3/preprocessors/src/run-macros/environment"
 	"webdoky3/preprocessors/src/run-macros/registry"
 	"webdoky3/preprocessors/src/run-macros/runner"
 )
 
-func runMacrosInSection(registryInstance *macros.Registry, section *preprocessor.Section) error {
-	macrosRunner := runner.NewMacrosRunner(&macros.Environment{
-		Locale: "uk",
-		Path:   section.Chapter.Path,
-	}, *registryInstance)
+func runMacrosInSection(registryInstance *registry.Registry, section *preprocessor.Section) error {
+	macrosRunner := runner.NewMacrosRunner(&environment.Environment{
+		Content: &section.Chapter.Content,
+		Locale:  "uk",
+		Path:    section.Chapter.Path,
+	}, registryInstance)
 	section.Chapter.Content = macrosRunner.Run(section.Chapter.Content)
 	for _, subItem := range section.Chapter.SubItems {
 		if subItem.IsSeparator {
@@ -32,7 +33,7 @@ func runMacros(book *preprocessor.Book, context *preprocessor.Context) (*preproc
 		if section.IsSeparator {
 			continue
 		}
-		err := runMacrosInSection(&registryInstance, &section)
+		err := runMacrosInSection(registryInstance, &section)
 		if err != nil {
 			return nil, err
 		}

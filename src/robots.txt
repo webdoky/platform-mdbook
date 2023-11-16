@@ -1,3 +1,9 @@
 User-Agent: *
 Disallow: /
 Sitemap: /sitemap.xml
+
+User-Agent: *
+Disallow: /live-samples
+
+User-Agent: *
+Disallow: /interactive-examples

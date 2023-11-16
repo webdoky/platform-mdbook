@@ -5,17 +5,19 @@ import (
 	"regexp"
 	"strings"
 	"webdoky3/preprocessors/src/helpers"
+	"webdoky3/preprocessors/src/run-macros/environment"
 	"webdoky3/preprocessors/src/run-macros/macros"
+	"webdoky3/preprocessors/src/run-macros/registry"
 )
 
 var MACRO_REGEXP = regexp.MustCompile(`{{(\w+)(?:\(([^{}]+)\))?}}`)
 
 type MacrosRunner struct {
-	environment *macros.Environment
-	registry    macros.Registry
+	environment *environment.Environment
+	registry    *registry.Registry
 }
 
-func (mr *MacrosRunner) lookupMacro(macroName string) func(*macros.Environment, macros.Registry, string) (string, error) {
+func (mr *MacrosRunner) lookupMacro(macroName string) func(*environment.Environment, *registry.Registry, string) (string, error) {
 	return macros.MacrosIndex[strings.ToLower(macroName)]
 }
 
@@ -38,9 +40,9 @@ func (mr *MacrosRunner) Run(markdownCode string) string {
 	})
 }
 
-func NewMacrosRunner(environment *macros.Environment, registry macros.Registry) *MacrosRunner {
+func NewMacrosRunner(environment *environment.Environment, reg *registry.Registry) *MacrosRunner {
 	return &MacrosRunner{
 		environment: environment,
-		registry:    registry,
+		registry:    reg,
 	}
 }

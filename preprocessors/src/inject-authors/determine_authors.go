@@ -3,9 +3,12 @@ package main
 import (
 	"log"
 	"os/exec"
+	"sync"
 )
 
 // var COMMAND_PATTERN = "cd %s && git log --pretty=full --follow -- %s"
+
+var gitMutex = &sync.Mutex{}
 
 func determineAuthors(repositoryPath string, filePath string, locale string) ([]string, error) {
 	log.Println("determineAuthors: " + filePath)
@@ -17,7 +20,9 @@ func determineAuthors(repositoryPath string, filePath string, locale string) ([]
 	// command := fmt.Sprintf(COMMAND_PATTERN, repositoryPath, filePath)
 	// log.Println(command)
 	// output, err := exec.Command(fmt.Sprintf(COMMAND_PATTERN, repositoryPath, filePath)).Output()
+	gitMutex.Lock()
 	output, err := exec.Command("git", "-C", repositoryPath, "log", "--pretty=full", "--follow", "--", "files/"+locale+"/"+filePath).Output()
+	gitMutex.Unlock()
 	if err != nil {
 		return nil, err
 	}

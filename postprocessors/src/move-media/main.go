@@ -56,9 +56,17 @@ func processFile(path string, info os.FileInfo, err error) error {
 	fileFolder := path[:strings.LastIndex(path, "/")]
 	frontmatterData, err := getFrontmatterData(fileFolder + "/index.md")
 	if err != nil {
+		if strings.Contains(err.Error(), "no such file") {
+			log.Println(err)
+			return nil
+		}
 		return err
 	}
 	targetFolder := TARGET_FOLDER + "/" + frontmatterData.Slug
+	err = os.MkdirAll(targetFolder, os.ModePerm)
+	if err != nil {
+		return err
+	}
 	log.Println("Moving " + path + " to " + targetFolder)
 	err = copyFileToFolder(path, targetFolder)
 	if err != nil {
@@ -70,6 +78,6 @@ func processFile(path string, info os.FileInfo, err error) error {
 func main() {
 	err := filepath.Walk(SOURCE_FOLDER, processFile)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }

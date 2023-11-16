@@ -4,10 +4,12 @@ import (
 	"log"
 	"strings"
 	"webdoky3/preprocessors/src/helpers"
+	"webdoky3/preprocessors/src/run-macros/environment"
+	"webdoky3/preprocessors/src/run-macros/registry"
 )
 
-func glossarydisambiguation(env *Environment, registry Registry, _ string) (string, error) {
-	subItems := registry.GetSubItems(env.Path)
+func glossarydisambiguation(env *environment.Environment, r *registry.Registry, _ string) (string, error) {
+	subItems := r.GetSubItems(env.Path)
 	content := "<dl>"
 	for _, subItem := range subItems {
 		log.Printf("subItem: %s", subItem.Chapter.Path)

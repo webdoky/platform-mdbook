@@ -4,7 +4,8 @@ book
 node_modules
 bookData.json
 contextData.json
-logs/*.log
+logs/**/*.log
+live-samples/
 
 preprocessors/*
 !preprocessors/src
