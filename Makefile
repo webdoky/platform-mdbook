@@ -32,7 +32,7 @@ content:
 	git submodule add git@github.com:webdoky/content.git ./content
 
 content/files/uk/index.md: src/index-template.md
-	cp ./index-template.md ./content/files/uk/index.md
+	cp ./src/index-template.md ./content/files/uk/index.md
 
 content/files/uk/SUMMARY.md:
 	echo "# Зміст" > ./content/files/uk/SUMMARY.md
