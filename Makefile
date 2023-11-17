@@ -9,8 +9,8 @@ export $(shell sed 's/=.*//' .env)
 
 book: book/uk interactive-examples/docs
 
-book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md node_modules original-content postprocessors/move-media preprocessors/format-links preprocessors/inject-authors preprocessors/rewire-paths preprocessors/run-macros preprocessors/strip-frontmatter preprocessors/summary preprocessors/writer src
-	. ${HOME}/.nvm/nvm.sh && nvm use 18 && mdbook build
+book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md original-content postprocessors/move-media preprocessors/format-links preprocessors/inject-authors preprocessors/rewire-paths preprocessors/run-macros preprocessors/strip-frontmatter preprocessors/summary preprocessors/writer src
+	mdbook build
 	./postprocessors/move-media
 
 book/interactive-examples: interactive-examples/docs postprocessors/fix-interactive-examples
