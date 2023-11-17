@@ -64,6 +64,6 @@ command = "preprocessors/format-links"
 # command = "preprocessors/inject-authors"
 
 [preprocessor.run-macros]
-after = ["summary"]
-before = ["format-links", "links"]
+after = ["summary", "rewire-paths"]
+before = ["format-links", "links", "strip-frontmatter"]
 command = "preprocessors/run-macros"

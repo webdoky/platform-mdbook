@@ -9,11 +9,7 @@ import (
 
 var tCode *template.Template
 
-type CodeParams struct {
-	Text string
-}
-
-func RenderCode(params *CodeParams) (string, error) {
+func RenderCode(params *WrapperParams) (string, error) {
 	var b bytes.Buffer
 	err := tCode.Execute(&b, params)
 	if err != nil {

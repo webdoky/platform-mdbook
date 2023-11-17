@@ -10,7 +10,7 @@ import (
 	"webdoky3/preprocessors/src/run-macros/registry"
 )
 
-var MACRO_REGEXP = regexp.MustCompile(`{{(\w+)(?:\(([^{}]+)\))?}}`)
+var MACRO_REGEXP = regexp.MustCompile(`{{([\w-]+)(?:\(([^{}]+)\))?}}`)
 
 type MacrosRunner struct {
 	environment *environment.Environment

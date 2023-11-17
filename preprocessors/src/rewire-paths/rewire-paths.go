@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+	"strings"
 	"webdoky3/preprocessors/src/helpers"
 	"webdoky3/preprocessors/src/preprocessor"
 )
@@ -13,11 +15,12 @@ func alterSection(section *preprocessor.Section, sourcePath string) error {
 	}
 	if data.Slug != "" {
 		section.Chapter.Path = "uk/docs/" + data.Slug + "/index.md"
+		section.Chapter.Path = strings.Replace(section.Chapter.Path, "/./", "/", -1)
 	}
 	if data.Title != "" {
 		section.Chapter.Content = "# " + helpers.EscapeForMarkdown(data.Title) + "\n\n" + section.Chapter.Content
 	} else {
-		panic("Title is empty")
+		log.Fatal("Title is empty")
 	}
 	for _, subItem := range section.Chapter.SubItems {
 		if subItem.IsSeparator {
@@ -48,8 +51,8 @@ func rewirePaths(book *preprocessor.Book, context *preprocessor.Context) (*prepr
 
 func main() {
 	p := preprocessor.NewPreprocessor(rewirePaths)
-	error := p.Run()
-	if error != nil {
-		panic(error)
+	err := p.Run()
+	if err != nil {
+		log.Fatal(err)
 	}
 }

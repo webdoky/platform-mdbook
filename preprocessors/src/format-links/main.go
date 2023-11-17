@@ -8,6 +8,7 @@ import (
 	"sort"
 	"strings"
 	"webdoky3/preprocessors/src/helpers"
+	"webdoky3/preprocessors/src/helpers/l10n"
 	renderhtml "webdoky3/preprocessors/src/helpers/render_html"
 	"webdoky3/preprocessors/src/preprocessor"
 )
@@ -86,7 +87,7 @@ func getLinkTooltip(href string) string {
 	}
 	tooltip := pathsSet[href+"/index.md"]
 	if tooltip == "" {
-		return "Ця сторінка відсутня"
+		return l10n.L10nCommon("uk", "TranslationCTA")
 	}
 	return helpers.EscapeForMarkdown(tooltip)
 }

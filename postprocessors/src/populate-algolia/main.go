@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"hash/fnv"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -11,7 +12,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-var NO_GO_TAGS []string = []string{"#Формальний-синтаксис", "#Специфікації", "script", "style", "noscript", "table", "pre", "ul", "ol", "h1", "blockquote"}
+var NO_GO_TAGS []string = []string{"#Формальний-синтаксис", "#Специфікації", "script", "style", "noscript", "table", "pre", "ul", "ol", "h1", "blockquote", ".notecard"}
 
 var CUT_MARKERS []string = []string{"#Дивіться-також", "#Автори-статті", "#Автори-перекладу"}
 
@@ -57,11 +58,11 @@ func initHashes() {
 			hashes = make(map[string]uint32)
 			return
 		}
-		panic(err)
+		log.Fatal(err)
 	}
 	err = json.Unmarshal(jsonData, &hashes)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }
 
@@ -117,7 +118,7 @@ func main() {
 		return nil
 	})
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }
 

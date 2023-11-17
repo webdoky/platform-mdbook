@@ -60,6 +60,9 @@ a[href*="//"]::before {
 }
 
 #hits {
+    border-color: var(--searchresults-border-color);
+    border-style: solid;
+    border-width: 1px;
     overflow: auto;
     top: 50px;
     max-height: calc(100vh - 50px);
@@ -74,13 +77,13 @@ a[href*="//"]::before {
 
 .ais-Hits-item,
 .ais-InfiniteHits-item {
-    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--fg);
+    background-color: var(--searchresults-li-bg);
     padding: 0;
 }
 
 .ais-Hits-item>a,
 .ais-InfiniteHits-item>a {
-    color: currentColor;
     padding: 1.5rem;
     text-decoration: none;
     width: 100%;
@@ -124,6 +127,10 @@ a[href*="//"]::before {
 }
 
 .ais-SearchBox-input {
+    background-color: var(--searchbar-bg);
+    border-color: var(--searchbar-border-color);
+    box-shadow: var(--searchbar-shadow-color) 0 1px 4px 0 inset;
+    color: var(--searchbar-fg);
     padding-left: 4rem;
 }
 
@@ -131,13 +138,10 @@ a[href*="//"]::before {
     white-space: initial;
 }
 
-.ais-Highlight {
-    color: white;
-}
 
 .ais-Highlight-nonHighlighted {
     background-color: transparent;
-    color: black;
+    color: currentColor;
 }
 
 .sample-code-frame {
@@ -146,4 +150,37 @@ a[href*="//"]::before {
     border-width: 1px;
     border-color: var(--quote-border);
     padding: 0.5rem;
+}
+
+.notecard {
+    --note-background: var(--theme-popup-bg);
+    --note-theme: var(--sidebar-active);
+    background-color: var(--quote-bg);
+    border: 1px solid var(--quote-border);
+    border-left: 4px solid var(--warning-border);
+    border-radius: 0.25rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 2px rgba(43, 42, 51, .05);
+    margin: 1rem 0;
+    padding: 1rem 1rem 1rem 3rem;
+    position: relative;
+}
+
+.notecard:first-of-type {
+    margin-top: 2rem;
+}
+
+.notecard:last-of-type {
+    margin-bottom: 2rem;
+}
+
+.notecard,
+.notecard li,
+.notecard p {
+    color: var(--text-secondary);
+}
+
+.notecard.nonstandard {
+    --note-background: var(--background-warning);
+    --note-theme: var(--icon-warning);
 }

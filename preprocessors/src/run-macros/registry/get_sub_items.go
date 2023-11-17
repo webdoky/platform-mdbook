@@ -6,6 +6,7 @@ import (
 )
 
 func findSubItemsInSections(section *preprocessor.Section, path string) []preprocessor.Section {
+	// log.Printf("section.Chapter.Path: %q, path: %q", section.Chapter.Path, path)
 	if section.Chapter.Path == path {
 		return section.Chapter.SubItems
 	}

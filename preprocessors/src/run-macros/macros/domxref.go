@@ -8,11 +8,7 @@ import (
 	renderhtml "webdoky3/preprocessors/src/helpers/render_html"
 	"webdoky3/preprocessors/src/run-macros/environment"
 	"webdoky3/preprocessors/src/run-macros/registry"
-
-	"golang.org/x/exp/slices"
 )
-
-var RTL_LOCALES = []string{"ar", "fa", "he"}
 
 func parseDomxrefArgs(env *environment.Environment, args string) (string, string, string, bool, error) {
 	// Split the args string into a slice of strings
@@ -34,7 +30,7 @@ func parseDomxrefArgs(env *environment.Environment, args string) (string, string
 		anchor = strings.TrimPrefix(helpers.UnwrapString(argSlice[2]), "#")
 		fallthrough
 	case 2:
-		displayName = helpers.WrapAsCode(helpers.UnwrapString(argSlice[1]))
+		displayName = helpers.UnwrapString(argSlice[1])
 		fallthrough
 	case 1:
 		apiName = helpers.UnwrapString(argSlice[0])
@@ -51,9 +47,6 @@ func parseDomxrefArgs(env *environment.Environment, args string) (string, string
 	apiName = strings.ReplaceAll(apiName, "()", "")
 	apiName = strings.ReplaceAll(apiName, ".prototype.", ".")
 	apiName = strings.ReplaceAll(apiName, ".", "/")
-	if slices.Contains(RTL_LOCALES, strings.ToLower(env.Locale)) {
-		displayName = "<bdi>" + displayName + "</bdi>"
-	}
 	// Capitalize apiName
 	apiName = strings.ToUpper(apiName[0:1]) + apiName[1:]
 	return apiName, displayName, anchor, ignoreWrap, nil

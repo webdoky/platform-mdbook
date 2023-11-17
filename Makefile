@@ -20,7 +20,10 @@ book/interactive-examples: interactive-examples/docs postprocessors/fix-interact
 book/live-samples: book/uk
 	cp -r live-samples ./book/live-samples
 
-build: book book/interactive-examples book/live-samples
+book/robots.txt: src/robots.txt
+	cp ./src/robots.txt ./book/robots.txt
+
+build: book book/interactive-examples book/live-samples book/robots.txt
 
 content:
 	git submodule add git@github.com:webdoky/content.git ./content
