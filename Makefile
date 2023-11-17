@@ -1,8 +1,11 @@
 #!make
 
 include .env
-export $(shell sed 's/=.*//' .env)
-
+# If .env exists
+ifneq ("$(wildcard .env)","")
+	include .env
+	export $(shell sed 's/=.*//' .env)
+endif
 .ONESHELL:
 .PHONY: build clean deploy install rebuild serve
 .SHELLFLAGS += -e
