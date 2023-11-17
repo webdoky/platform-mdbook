@@ -1,6 +1,6 @@
 #!make
 
-include .env
+# include .env
 # If .env exists
 ifneq ("$(wildcard .env)","")
 	include .env
