@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: rust-build/rust-build.action@v1.4.4
+      - uses: ATiltedTree/setup-rust@v1
+        with:
+          rust-version: stable
       - run: cargo install mdbook --vers 0.4.12
       - uses: actions/setup-go@v4
         with:
