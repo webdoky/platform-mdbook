@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: make content
+      - run: git submodule add git@github.com:webdoky/content.git ./content
       - run: make content/files/uk/SUMMARY.md
       - name: Setup MDBook
         run: mkdir bin && curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.35/mdbook-v0.4.35-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin && bin/mdbook build
@@ -17,8 +17,8 @@ jobs:
         with:
           go-version: "1.20"
       - run: "go get ..."
-      - run: make original-content
-      - run: make interactive-examples
+      - run: git submodule add git@github.com:mdn/content.git ./original-content
+      - run: git submodule add git@github.com:webdoky/interactive-examples.git
       - uses: actions/setup-node@v2
         with:
           node-version: "18"
