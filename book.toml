@@ -33,7 +33,7 @@ enable = false
 command = "revamp/exe/rewire-paths"
 
 [preprocessor.writer]
-after = ["rewire-paths", "summary", "run-macros"]
+after = ["rewire-paths", "run-macros"]
 before = ["format-links"]
 # before = ["summary"]
 # command = "node scripts/writer/index.js"
