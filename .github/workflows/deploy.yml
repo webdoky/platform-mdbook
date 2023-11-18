@@ -76,6 +76,8 @@ jobs:
       - run: cp ./src/index-template.md ./content/files/uk/index.md
       - run: chmod +x ./revamp/exe/summary && ./revamp/exe/summary
       - run: ./bin/mdbook build
+      - run: ls ./book
+      - run: ls .
       - run: cp -r ./live-samples ./book/live-samples
       - run: cp ./src/robots.txt ./book/robots.txt
       - uses: actions/download-artifact@v2
