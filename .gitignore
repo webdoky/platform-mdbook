@@ -7,10 +7,9 @@ contextData.json
 logs/**/*.log
 live-samples/
 
-preprocessors/*
-!preprocessors/src
-postprocessors/*
-!postprocessors/src
+**/exe/*
 
 links-report.md
 missing-links-report.md
+
+!**/.keep
