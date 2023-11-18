@@ -92,8 +92,27 @@ jobs:
         with:
           name: interactive-examples
           path: book/interactive-examples
-      - run: chmod +x ./revamp/exe/fix-interactive-examples
-      - run: chmod +x ./revamp/exe/move-media
-      - run: chmod +x ./revamp/exe/populate-algolia
+      #   - run: chmod +x ./revamp/exe/populate-algolia
       - run: chmod +x ./revamp/exe/fix-interactive-examples && ./revamp/exe/fix-interactive-examples
       - run: chmod +x ./revamp/exe/move-media && ./revamp/exe/move-media
+      - uses: actions/upload-artifact@v3
+        with:
+          if-no-files-found: error
+          name: build
+          path: book
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: download-artifact@v2
+        with:
+          name: build
+          path: book
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - run: yarn global add surge
+      - run: surge --project ./book --domain webdoky3.surge.sh
+        env:
+          SURGE_LOGIN: ${{ env.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
