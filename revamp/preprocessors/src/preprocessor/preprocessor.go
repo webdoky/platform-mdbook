@@ -43,6 +43,8 @@ func (p *Preprocessor) Run() error {
 		return nil
 	}
 	logFile := LogToFile()
+	log.Println("Starting " + os.Args[0] + " preprocessor")
+	defer log.Println("Exiting " + os.Args[0] + " preprocessor")
 	if logFile != nil {
 		defer logFile.Close()
 	}

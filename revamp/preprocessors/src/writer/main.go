@@ -35,11 +35,9 @@ func saveJson(book *preprocessor.Book, context *preprocessor.Context) (*preproce
 }
 
 func main() {
-	log.Println("Starting writer")
 	p := preprocessor.NewPreprocessor(saveJson)
 	err := p.Run()
 	if err != nil {
-
 		log.Fatal(err)
 	}
 }
