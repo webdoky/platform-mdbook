@@ -26,18 +26,18 @@ enable = false
 # [preprocessor.summary]
 # before = ["links", "rewire-paths"]
 # # command = "node scripts/summary/summary.js"
-# command = "revamp/preprocessors/exe/summary"
+# command = "revamp/exe/summary"
 
 [preprocessor.rewire-paths]
 # command = "node scripts/rewire-paths/rewire-paths.js"
-command = "revamp/preprocessors/exe/rewire-paths"
+command = "revamp/exe/rewire-paths"
 
 [preprocessor.writer]
 after = ["rewire-paths", "summary", "run-macros"]
 before = ["format-links"]
 # before = ["summary"]
 # command = "node scripts/writer/index.js"
-command = "revamp/preprocessors/exe/writer"
+command = "revamp/exe/writer"
 # command = "./redirect_to_file.zsh"
 
 # [preprocessor.yari-ports]
@@ -50,19 +50,19 @@ command = "revamp/preprocessors/exe/writer"
 after = ["rewire-paths", "writer"]
 before = ["links"]
 # command = "node scripts/strip-frontmatter/strip-frontmatter.js"
-command = "revamp/preprocessors/exe/strip-frontmatter"
+command = "revamp/exe/strip-frontmatter"
 
 [preprocessor.format-links]
 after = ["rewire-paths", "run-macros"]
 before = ["links"]
-command = "revamp/preprocessors/exe/format-links"
+command = "revamp/exe/format-links"
 
 # [preprocessor.inject-authors]
 # after = ["summary"]
 # before = ["rewire-paths"]
-# command = "revamp/preprocessors/exe/inject-authors"
+# command = "revamp/exe/inject-authors"
 
 [preprocessor.run-macros]
 after = ["rewire-paths"]
 before = ["format-links", "links", "strip-frontmatter"]
-command = "revamp/preprocessors/exe/run-macros"
+command = "revamp/exe/run-macros"

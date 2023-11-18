@@ -5,7 +5,59 @@ on:
     branches:
       - main
 jobs:
+  build-interactive-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          name: webdoky/interactive-examples
+          ref: master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      - run: yarn install
+      - run: yarn build
+      - uses: actions/upload-artifact@v3
+        with:
+          if-no-files-found: error
+          name: interactive-examples
+          path: ./docs/
+  build-revamp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+        with:
+          go-version: "1.20"
+      - name: Install dependencies
+        run: "go get ..."
+      - name: Build summary generator
+        run: cd revamp/generators/src/summary && go build -o ../../../../exe/
+      - name: Build format-links preprocessor
+        run: cd revamp/preprocessors/src/format-links && go build -o ../../../../exe/
+      - name: Build inject-authors preprocessor
+        run: cd revamp/preprocessors/src/inject-authors && go build -o ../../../../exe/
+      - name: Build rewire-paths preprocessor
+        run: cd revamp/preprocessors/src/rewire-paths && go build -o ../../../../exe/
+      - name: Build run-macros preprocessor
+        run: cd revamp/preprocessors/src/run-macros && go build -o ../../../../exe/
+      - name: Build strip-frontmatter preprocessor
+        run: cd revamp/preprocessors/src/strip-frontmatter && go build -o ../../../../exe/
+      - name: Build writer preprocessor
+        run: cd revamp/preprocessors/src/writer && go build -o ../../../../exe/
+      - name: Build fix-interactive-examples postprocessor
+        run: cd revamp/postprocessors/src/fix-interactive-examples && go build -o ../../../../exe/
+      - name: Build move-media postprocessor
+        run: cd revamp/postprocessors/src/move-media && go build -o ../../../../exe/
+      - name: Build populate-algolia postprocessor
+        run: cd revamp/postprocessors/src/populate-algolia && go build -o ../../../../exe/
+      - uses: actions/upload-artifact@v3
+        with:
+          if-no-files-found: error
+          name: revamp
+          path: ./exe/
   build:
+    needs: [build-interactive-examples, build-revamp]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,14 +65,18 @@ jobs:
           submodules: true
       - name: Setup MDBook
         run: mkdir bin && curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.35/mdbook-v0.4.35-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
-      - uses: actions/setup-go@v4
+      - uses: actions/download-artifact@v2
         with:
-          go-version: "1.20"
-      - run: "go get ..."
-      - uses: actions/setup-node@v2
+          name: revamp
+          path: revamp/exe
+      - run: ./revamp/exe/summary
+      - run: cp ./src/index-template.md ./content/files/uk/index.md
+      - run: ./bin/mdbook build
+      - run: cp -r ./live-samples ./book/live-samples
+      - run: cp ./src/robots.txt ./book/robots.txt
+      - uses: actions/download-artifact@v2
         with:
-          node-version: "18"
-      - run: cd interactive-examples && yarn install
-      - run: cd interactive-examples && yarn build
-      - run: PATH=$PATH:bin make book/uk
-      - run: make book
+          name: interactive-examples
+          path: book/interactive-examples
+      - run: ./revamp/exe/fix-interactive-examples
+      - run: ./revamp/exe/move-media

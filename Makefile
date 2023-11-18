@@ -12,13 +12,13 @@ endif
 
 book: book/uk interactive-examples/docs
 
-book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md original-content revamp/postprocessors/exe/move-media revamp/preprocessors/exe/format-links revamp/preprocessors/exe/inject-authors revamp/preprocessors/exe/rewire-paths revamp/preprocessors/exe/run-macros revamp/preprocessors/exe/strip-frontmatter  revamp/preprocessors/exe/writer src
+book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md original-content revamp/exe/move-media revamp/exe/format-links revamp/exe/inject-authors revamp/exe/rewire-paths revamp/exe/run-macros revamp/exe/strip-frontmatter  revamp/exe/writer src
 	mdbook build
-	./revamp/postprocessors/exe/move-media
+	./revamp/exe/move-media
 
 book/interactive-examples: interactive-examples/docs revamp/postprocessors/exe/fix-interactive-examples
 	cp -r interactive-examples/docs ./book/interactive-examples
-	./revamp/postprocessors/exe/fix-interactive-examples
+	./revamp/exe/fix-interactive-examples
 
 book/live-samples: book/uk
 	cp -r live-samples ./book/live-samples
@@ -34,14 +34,14 @@ content:
 content/files/uk/index.md: src/index-template.md
 	cp ./src/index-template.md ./content/files/uk/index.md
 
-content/files/uk/SUMMARY.md: revamp/generators/exe/summary
-	./revamp/generators/exe/summary
+content/files/uk/SUMMARY.md: revamp/exe/summary
+	./revamp/exe/summary
 
 clean:
 	rm -rf book
 
-deploy: build revamp/postprocessors/exe/populate-algolia
-	./revamp/postprocessors/exe/populate-algolia
+deploy: build revamp/exe/populate-algolia
+	./revamp/exe/populate-algolia
 	exit 1
 
 install:
@@ -64,38 +64,34 @@ node_modules:
 original-content:
 	git submodule add git@github.com:mdn/content.git ./original-content
 
-revamp/generators/exe/summary: revamp/generators/src/summary
-	cd revamp/generators/src/summary && go build -o ../../exe
+revamp/exe/summary: revamp/generators/src/summary
+	cd revamp/generators/src/summary && go build -o ../../../exe/
 
-revamp/postprocessors/exe/fix-interactive-examples: revamp/postprocessors/src/fix-interactive-examples
-	cd revamp/postprocessors/src/fix-interactive-examples && go build -o ../../exe
+revamp/exe/fix-interactive-examples: revamp/postprocessors/src/fix-interactive-examples
+	cd revamp/postprocessors/src/fix-interactive-examples && go build -o ../../../exe/
 
-revamp/postprocessors/exe/move-media: revamp/postprocessors/src/move-media
-	cd revamp/postprocessors/src/move-media && go build -o ../../exe
+revamp/exe/move-media: revamp/postprocessors/src/move-media
+	cd revamp/postprocessors/src/move-media && go build -o ../../../exe/
 
-revamp/postprocessors/exe/populate-algolia: revamp/postprocessors/src/populate-algolia
-	cd revamp/postprocessors/src/populate-algolia && go build -o ../../exe
+revamp/exe/populate-algolia: revamp/postprocessors/src/populate-algolia
+	cd revamp/postprocessors/src/populate-algolia && go build -o ../../../exe/
 
-revamp/preprocessors/exe/format-links: revamp/preprocessors/src/format-links revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
-	cd revamp/preprocessors/src/format-links && go build -o ../../exe
+revamp/exe/format-links: revamp/preprocessors/src/format-links revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
+	cd revamp/preprocessors/src/format-links && go build -o ../../../exe/
 
-revamp/preprocessors/exe/inject-authors: revamp/preprocessors/src/inject-authors revamp/preprocessors/src/preprocessor
-	cd revamp/preprocessors/src/inject-authors && go build -o ../../exe
+revamp/exe/inject-authors: revamp/preprocessors/src/inject-authors revamp/preprocessors/src/preprocessor
+	cd revamp/preprocessors/src/inject-authors && go build -o ../../../exe/
 
-revamp/preprocessors/exe/rewire-paths: revamp/preprocessors/src/rewire-paths revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
-	cd revamp/preprocessors/src/rewire-paths && go build -o ../../exe
+revamp/exe/rewire-paths: revamp/preprocessors/src/rewire-paths revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
+	cd revamp/preprocessors/src/rewire-paths && go build -o ../../../exe/
 
-revamp/preprocessors/exe/run-macros: revamp/preprocessors/src/run-macros revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
-	cd revamp/preprocessors/src/run-macros && go build -o ../../exe
+revamp/exe/run-macros: revamp/preprocessors/src/run-macros revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
+	cd revamp/preprocessors/src/run-macros && go build -o ../../../exe/
 
-revamp/preprocessors/exe/strip-frontmatter: revamp/preprocessors/src/strip-frontmatter revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
-	cd revamp/preprocessors/src/strip-frontmatter && go build -o ../../exe
+revamp/exe/strip-frontmatter: revamp/preprocessors/src/strip-frontmatter revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
+	cd revamp/preprocessors/src/strip-frontmatter && go build -o ../../../exe/
 
-revamp/preprocessors/exe/writer: revamp/preprocessors/src/writer revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
-	cd revamp/preprocessors/src/writer && go build -o ../../exe
+revamp/exe/writer: revamp/preprocessors/src/writer revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
+	cd revamp/preprocessors/src/writer && go build -o ../../../exe/
 
 rebuild: clean build
-
-
-serve: interactive-examples/docs content/files/uk/SUMMARY.md
-	mdbook serve --port 3002
