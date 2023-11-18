@@ -1,3 +1,5 @@
+env:
+  PRODUCTION: true
 name: Deploy
 run-name: ${{ github.actor }} deploys 🚀
 on:
@@ -12,7 +14,7 @@ jobs:
         with:
           repository: webdoky/interactive-examples
           ref: master
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           node-version: "18"
       - run: yarn install
