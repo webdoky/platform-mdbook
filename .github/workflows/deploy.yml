@@ -72,7 +72,7 @@ jobs:
         with:
           name: revamp
           path: revamp/exe
-      - run: ./revamp/exe/summary
+      - run: chmod +x ./revamp/exe/summary && ./revamp/exe/summary
       - run: cp ./src/index-template.md ./content/files/uk/index.md
       - run: ./bin/mdbook build
       - run: cp -r ./live-samples ./book/live-samples
@@ -81,5 +81,5 @@ jobs:
         with:
           name: interactive-examples
           path: book/interactive-examples
-      - run: ./revamp/exe/fix-interactive-examples
-      - run: ./revamp/exe/move-media
+      - run: chmod +x ./revamp/exe/fix-interactive-examples && ./revamp/exe/fix-interactive-examples
+      - run: chmod +x ./revamp/exe/move-media && ./revamp/exe/move-media
