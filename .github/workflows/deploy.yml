@@ -95,6 +95,8 @@ jobs:
       #   - run: chmod +x ./revamp/exe/populate-algolia
       - run: chmod +x ./revamp/exe/fix-interactive-examples && ./revamp/exe/fix-interactive-examples
       - run: chmod +x ./revamp/exe/move-media && ./revamp/exe/move-media
+      # Replace asterisks in all filepaths with "_asterisk_" to avoid issues with Github Actions
+      - run: find ./book -type f -name "*" -exec sed -i 's/\*/_asterisk_/g' {} +
       - uses: actions/upload-artifact@v3
         with:
           if-no-files-found: error
@@ -108,6 +110,8 @@ jobs:
         with:
           name: build
           path: book
+      # Replace all "_asterisk_" in file paths with asterisks
+      - run: find ./book -type f -name "*" -exec sed -i 's/_asterisk_/*/g' {} +
       - uses: actions/setup-node@v4
         with:
           node-version: "18"
