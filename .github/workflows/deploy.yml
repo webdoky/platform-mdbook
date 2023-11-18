@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          name: webdoky/interactive-examples
+          repository: webdoky/interactive-examples
           ref: master
       - uses: actions/setup-node@v2
         with:
@@ -26,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-go@v4
         with:
           go-version: "1.20"
@@ -62,6 +64,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           submodules: true
       - name: Setup MDBook
         run: mkdir bin && curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.35/mdbook-v0.4.35-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
