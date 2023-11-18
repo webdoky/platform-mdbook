@@ -72,8 +72,8 @@ jobs:
         with:
           name: revamp
           path: revamp/exe
-      - run: chmod +x ./revamp/exe/summary && ./revamp/exe/summary
       - run: cp ./src/index-template.md ./content/files/uk/index.md
+      - run: chmod +x ./revamp/exe/summary && ./revamp/exe/summary
       - run: ./bin/mdbook build
       - run: cp -r ./live-samples ./book/live-samples
       - run: cp ./src/robots.txt ./book/robots.txt
