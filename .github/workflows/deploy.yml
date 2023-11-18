@@ -70,7 +70,7 @@ jobs:
           submodules: true
       - name: Setup MDBook
         run: mkdir bin && curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.35/mdbook-v0.4.35-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: revamp
           path: revamp/exe
@@ -88,7 +88,7 @@ jobs:
       - run: ls .
       - run: cp -r ./live-samples ./book/live-samples
       - run: cp ./src/robots.txt ./book/robots.txt
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: interactive-examples
           path: book/interactive-examples
@@ -96,7 +96,7 @@ jobs:
       - run: chmod +x ./revamp/exe/fix-interactive-examples && ./revamp/exe/fix-interactive-examples
       - run: chmod +x ./revamp/exe/move-media && ./revamp/exe/move-media
       # Recursively replace all asterisks in folder names with "_asterisk_"
-      - run: apt install rename
+      - run: sudo apt install rename
       - run: find ./book -depth -type d -name "*" -execdir rename 's/\*/_asterisk_/g' "{}" \;
       - uses: actions/upload-artifact@v3
         with:
@@ -107,12 +107,12 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: build
           path: book
       # Recursively replace all "_asterisk_" in folder names with asterisks
-      - run: apt install rename
+      - run: sudo apt install rename
       - run: find ./book -depth -type d -name "*_asterisk_*" -execdir rename 's/_asterisk_/*/g' "{}" \;
       - uses: actions/setup-node@v4
         with:
