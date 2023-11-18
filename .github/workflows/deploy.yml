@@ -111,6 +111,7 @@ jobs:
           name: build
           path: book
       # Recursively replace all "_asterisk_" in folder names with asterisks
+      - run: apt install rename
       - run: find ./book -depth -type d -name "*_asterisk_*" -execdir rename 's/_asterisk_/*/g' "{}" \;
       - uses: actions/setup-node@v4
         with:
