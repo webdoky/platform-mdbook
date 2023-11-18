@@ -95,9 +95,13 @@ jobs:
       #   - run: chmod +x ./revamp/exe/populate-algolia
       - run: chmod +x ./revamp/exe/fix-interactive-examples && ./revamp/exe/fix-interactive-examples
       - run: chmod +x ./revamp/exe/move-media && ./revamp/exe/move-media
-      # Recursively replace all asterisks in folder names with "_asterisk_"
       - run: sudo apt install rename
+      # Recursively replace all asterisks in folder names with "_asterisk_"
       - run: find ./book -depth -type d -name "*" -execdir rename 's/\*/_asterisk_/g' "{}" \;
+      # Recursively replace all doublecolons in folder names with "_doublecolon_"
+      - run: find ./book -depth -type d -name "*" -execdir rename 's/::/_doublecolon_/g' "{}" \;
+      # Recursively replace all colons in folder names with "_colon_"
+      - run: find ./book -depth -type d -name "*" -execdir rename 's/:/_colon_/g' "{}" \;
       - uses: actions/upload-artifact@v3
         with:
           if-no-files-found: error
@@ -111,9 +115,13 @@ jobs:
         with:
           name: build
           path: book
-      # Recursively replace all "_asterisk_" in folder names with asterisks
       - run: sudo apt install rename
+      # Recursively replace all "_asterisk_" in folder names with asterisks
       - run: find ./book -depth -type d -name "*_asterisk_*" -execdir rename 's/_asterisk_/*/g' "{}" \;
+      # Recursively replace all "_doublecolon_" in folder names with doublecolons
+      - run: find ./book -depth -type d -name "*_doublecolon_*" -execdir rename 's/_doublecolon_/::/g' "{}" \;
+      # Recursively replace all "_colon_" in folder names with colons
+      - run: find ./book -depth -type d -name "*_colon_*" -execdir rename 's/_colon_/:/g' "{}" \;
       - uses: actions/setup-node@v4
         with:
           node-version: "18"
