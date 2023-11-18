@@ -43,8 +43,9 @@ func (p *Preprocessor) Run() error {
 		return nil
 	}
 	logFile := LogToFile()
-	defer logFile.Close()
-
+	if logFile != nil {
+		defer logFile.Close()
+	}
 	log.Println("ReadAll from Stdin starts")
 	jsonInput, err := io.ReadAll(os.Stdin)
 	if err != nil {

@@ -8,6 +8,10 @@ import (
 )
 
 func LogToFile() *os.File {
+	if os.Getenv("PRODUCTION") == "true" {
+		log.SetOutput(os.Stderr)
+		return nil
+	}
 	appName := os.Args[0]
 	slashIndex := strings.LastIndex(appName, "/")
 	if slashIndex != -1 {
