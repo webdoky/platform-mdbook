@@ -77,6 +77,12 @@ jobs:
       - run: ls ./revamp/exe
       - run: cp ./src/index-template.md ./content/files/uk/index.md
       - run: chmod +x ./revamp/exe/summary && ./revamp/exe/summary
+      - run: chmod +x ./revamp/exe/format-links
+      - run: chmod +x ./revamp/exe/inject-authors
+      - run: chmod +x ./revamp/exe/rewire-paths
+      - run: chmod +x ./revamp/exe/run-macros
+      - run: chmod +x ./revamp/exe/strip-frontmatter
+      - run: chmod +x ./revamp/exe/writer
       - run: ./bin/mdbook build
       - run: ls ./book
       - run: ls .
@@ -86,5 +92,8 @@ jobs:
         with:
           name: interactive-examples
           path: book/interactive-examples
+      - run: chmod +x ./revamp/exe/fix-interactive-examples
+      - run: chmod +x ./revamp/exe/move-media
+      - run: chmod +x ./revamp/exe/populate-algolia
       - run: chmod +x ./revamp/exe/fix-interactive-examples && ./revamp/exe/fix-interactive-examples
       - run: chmod +x ./revamp/exe/move-media && ./revamp/exe/move-media
