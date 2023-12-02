@@ -1,4 +1,4 @@
-package macros
+package cssxref
 
 import (
 	"errors"
@@ -42,7 +42,7 @@ func parseCssxrefArgs(args string) (string, string, string, error) {
 	return slug, displayName, anchor, nil
 }
 
-func cssxref(env *environment.Environment, reg *registry.Registry, args string) (string, error) {
+func Cssxref(env *environment.Environment, reg *registry.Registry, args string) (string, error) {
 	slug, displayName, anchor, err := parseCssxrefArgs(args)
 	if err != nil {
 		return "", err

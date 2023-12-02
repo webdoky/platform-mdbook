@@ -16,7 +16,7 @@ book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md
 	mdbook build
 	./revamp/exe/move-media
 
-book/interactive-examples: interactive-examples/docs revamp/postprocessors/exe/fix-interactive-examples
+book/interactive-examples: interactive-examples/docs revamp/exe/fix-interactive-examples
 	cp -r interactive-examples/docs ./book/interactive-examples
 	./revamp/exe/fix-interactive-examples
 

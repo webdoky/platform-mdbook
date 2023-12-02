@@ -1,0 +1,19 @@
+package css_l10n
+
+import (
+	"webdoky3/revamp/preprocessors/src/run-macros/environment"
+	"webdoky3/revamp/preprocessors/src/run-macros/macros/cssxref"
+	"webdoky3/revamp/preprocessors/src/run-macros/registry"
+)
+
+func beforeAndAfterPseudos(env *environment.Environment, reg *registry.Registry, arg1 string, arg2 string) (string, error) {
+	beforeRef, err := cssxref.Cssxref(env, reg, "::before")
+	if err != nil {
+		return "", err
+	}
+	afterRef, err := cssxref.Cssxref(env, reg, "::after")
+	if err != nil {
+		return "", err
+	}
+	return "<a href=\"/" + env.Locale + "/docs/Web/CSS/Pseudo-elements\">псевдоелементи</a> " + beforeRef + " і " + afterRef, nil
+}

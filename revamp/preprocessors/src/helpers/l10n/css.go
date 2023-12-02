@@ -7,12 +7,12 @@ import (
 	"os"
 )
 
-const commonJsonFilePath = "./content/files/jsondata/L10n-Common.json"
+const cssJsonFilePath = "./content/files/jsondata/L10n-CSS.json"
 
-var commonL10nData map[string]map[string]string
+var cssTranslationData map[string]map[string]string
 
-func L10nCommon(locale string, key string) string {
-	keyData, ok := commonL10nData[key]
+func L10nCss(locale string, key string) string {
+	keyData, ok := cssTranslationData[key]
 	if !ok {
 		return key
 	}
@@ -24,8 +24,8 @@ func L10nCommon(locale string, key string) string {
 }
 
 func init() {
-	commonL10nData = make(map[string]map[string]string)
-	jsonFile, err := os.Open(commonJsonFilePath)
+	cssTranslationData = make(map[string]map[string]string)
+	jsonFile, err := os.Open(cssJsonFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,7 +34,7 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = json.Unmarshal(byteValue, &commonL10nData)
+	err = json.Unmarshal(byteValue, &cssTranslationData)
 	if err != nil {
 		log.Fatal(err)
 	}

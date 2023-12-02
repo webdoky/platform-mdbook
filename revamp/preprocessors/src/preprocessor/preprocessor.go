@@ -51,18 +51,20 @@ func (p *Preprocessor) Run() error {
 	log.Println("ReadAll from Stdin starts")
 	jsonInput, err := io.ReadAll(os.Stdin)
 	if err != nil {
+		log.Println("Failed to read JSON input:	" + err.Error())
 		return err
 	}
 	// helpers.WriteToStderr(string(jsonInput))
 	// jsonInput, err := ReadStdinToBuffer()
-	if err != nil {
-		return err
-	}
+	// if err != nil {
+	// 	return err
+	// }
 	// helpers.WriteToStderr(fmt.Sprintf("%+v\n", jsonInput.String()))
 	log.Println("ReadAll from Stdin ended")
 
 	var input []interface{}
 	if err := json.Unmarshal(jsonInput, &input); err != nil {
+		log.Println("Failed to parse JSON input:	" + err.Error())
 		return err
 	}
 	// if err := decoder.Decode(&input); err != nil {
@@ -71,17 +73,20 @@ func (p *Preprocessor) Run() error {
 	// helpers.WriteToStderr(fmt.Sprintf("%+v\n", input))
 
 	if len(input) != 2 {
+		log.Println("Invalid input:	" + err.Error())
 		return errors.New("invalid input")
 	}
 
 	contextMap, ok := input[0].(map[string]interface{})
 	if !ok {
+		log.Println("Invalid context:	" + err.Error())
 		return errors.New("invalid context")
 	}
 	context := ConvertMapToContext(contextMap)
 
 	bookMap, ok := input[1].(map[string]interface{})
 	if !ok {
+		log.Println("Invalid book:	" + err.Error())
 		return errors.New("invalid book")
 	}
 	// if bookMap["sections"] == nil || len(bookMap["sections"].([]interface{})) == 0 {
@@ -112,11 +117,13 @@ func (p *Preprocessor) Run() error {
 
 	processedBook, err := p.process(book, context)
 	if err != nil {
+		log.Println("Failed to process book:	" + err.Error())
 		return err
 	}
 
 	processedBookBytes, err := json.Marshal(processedBook)
 	if err != nil {
+		log.Println("Failed to serialize book:	" + err.Error())
 		return err
 	}
 
@@ -125,11 +132,13 @@ func (p *Preprocessor) Run() error {
 	// (e.g., "run-macros.json")
 	if os.Getenv(("PRODUCTION")) != "true" {
 		if err := os.WriteFile("./"+os.Args[0]+".json", processedBookBytes, 0644); err != nil {
+			log.Println("Failed to write debug book:	" + err.Error())
 			return err
 		}
 	}
 
 	if _, err := os.Stdout.Write(processedBookBytes); err != nil {
+		log.Println("Failed to output book:	" + err.Error())
 		return err
 	}
 

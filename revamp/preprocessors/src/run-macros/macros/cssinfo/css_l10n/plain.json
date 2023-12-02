@@ -1,0 +1,566 @@
+{
+  "absoluteLengthOrAsSpecified": {
+    "uk": "для відсотків і значень довжини – абсолютна довжина, або інше, якщо вказано"
+  },
+  "absoluteLengthOrKeyword": {
+    "uk": "для відсотків і значень довжини – абсолютна довжина, або інше, якщо задано ключове слово"
+  },
+  "absoluteLengthsSpecifiedColorAsSpecified": {
+    "uk": "будь-яка абсолютна довжина; будь-який обчислений колір; інакше – як задано"
+  },
+  "absoluteLengthZeroIfBorderStyleNoneOrHidden": {
+    "uk": "абсолютна довжина; <code>0</code>, якщо стиль рамки – <code>none</code> або <code>hidden</code>"
+  },
+  "absoluteLengthZeroOrLarger": {
+    "uk": "абсолютна довжина, нуль або більше"
+  },
+  "absolutelyPositionedElements": {
+    "uk": "абсолютно позиційовані елементи"
+  },
+  "absoluteURIOrNone": {
+    "uk": "абсолютний URI або <code>none</code>"
+  },
+  "all": {
+    "uk": "все"
+  },
+  "allElements": {
+    "uk": "всі елементи"
+  },
+  "allElementsAcceptingWidthOrHeight": {
+    "uk": "всі елементи, що приймають ширину та висоту"
+  },
+  "allElementsAndText": {
+    "uk": "всі елементи та текст"
+  },
+  "allElementsButNonReplacedAndTableColumns": {
+    "uk": "всі елементи, крім незаміщених рядкових елементів, колонок таблиць і груп колонок"
+  },
+  "allElementsButNonReplacedAndTableRows": {
+    "uk": "всі елементи, крім незаміщених рядкових елементів, рядів таблиць і груп рядів"
+  },
+  "allElementsCreatingNativeWindows": {
+    "uk": "всі елементи, що створюють нативні вікна, наприклад &lt;window&gt;, &lt;panel&gt;"
+  },
+  "allElementsExceptGeneratedContentOrPseudoElements": {
+    "uk": "всі елементи, крім згенерованого вмісту та псевдоелементів"
+  },
+  "allElementsExceptInlineBoxesAndInternalRubyOrTableBoxes": {
+    "uk": "всі елементи, крім рядкових рамок і внутрішніх рубі та табличних рамок"
+  },
+  "allElementsExceptInternalTableDisplayTypes": {
+    "uk": "всі елементи, крім <code>table-row-group</code>, <code>table-header-group</code>, <code>table-footer-group</code>, <code>table-row</code>, <code>table-column-group</code> та <code>table-column</code>"
+  },
+  "allElementsExceptNonReplacedInlineElementsTableRowsColumnsRowColumnGroups": {
+    "uk": "всі елементи, крім незаміщених рядкових елементів, рядів таблиць, груп рядів, колонок таблиць і груп колонок"
+  },
+  "allElementsExceptTableRowColumnGroupsTableRowsColumns": {
+    "uk": "всі елементи, крім груп рядів таблиць, груп колонок таблиць, рядів таблиць і колонок таблиць"
+  },
+  "allElementsExceptTableRowGroupsRowsColumnGroupsAndColumns": {
+    "uk": "всі елементи, крім груп рядів таблиць, рядів, груп колонок і колонок"
+  },
+  "allElementsSomeValuesNoEffectOnNonInlineElements": {
+    "uk": "всі елементи, хоча деякі значення не діють на нерядкові елементи"
+  },
+  "allElementsTreeAbidingPseudoElementsPageMarginBoxes": {
+    "uk": "всі елементи, псевдоелементи, що дотримуються дерева, та рамки зовнішніх полів сторінки"
+  },
+  "allElementsSVGContainerGraphicsAndGraphicsReferencingElements": {
+    "uk": "Всі елементи. У SVG це застосовується до контейнерів, графічних елементів та елементів графічних посилань."
+  },
+  "allHTMLElements": {
+    "uk": "усі елементи HTML"
+  },
+  "andInEnumeration": {
+    "uk": " і "
+  },
+  "angle": {
+    "uk": "кут"
+  },
+  "angleOrBasicShapeOrPath": {
+    "uk": "як &lt;angle&gt;, &lt;basic-shape&gt; або &lt;path()&gt;"
+  },
+  "animationType": {
+    "uk": "Тип анімації"
+  },
+  "appliesTo": {
+    "uk": "Застосовується до"
+  },
+  "asLonghands": {
+    "uk": "як і кожна зі складових цього скорочення:"
+  },
+  "asSpecified": {
+    "uk": "як задано"
+  },
+  "asSpecifiedAppliesToEachProperty": {
+    "uk": "як вказане значення застосовується до кожної складової цього скорочення."
+  },
+  "asSpecifiedExceptMatchParent": {
+    "uk": "як задано, крім значення <code>match-parent</code>, яке обчислюється відносно значення <code>direction</code> його батьківського елемента і дає обчислене значення або <code>left</code>, або <code>right</code>"
+  },
+  "asSpecifiedExceptPositionedFloatingAndRootElementsKeywordMaybeDifferent": {
+    "uk": "як вказане значення, крім позиційованих і пливних елементів і кореневого елемента. У обох випадках обчислюване значення може бути ключовим словом, відмінним від вказаного."
+  },
+  "asSpecifiedRelativeToAbsoluteLengths": {
+    "uk": "як задано, але з відносними довжинами, що перетворюються на абсолютні"
+  },
+  "asSpecifiedWithExceptionOfResolution": {
+    "uk": "як задано, за винятком &lt;resolution&gt;, яке може бути замінено значенням, обчисленим для 'snap'"
+  },
+  "asSpecifiedWithLengthsAbsoluteAndNormalComputingToZeroExceptMultiColumn": {
+    "uk": "як задано, зі значеннями &lt;length&gt;, перетвореними на абсолютні, та значеннями normal, що обчислюються в нуль, за винятком багатоколонкових елементів"
+  },
+  "asSpecifiedWithLengthValuesComputed": {
+    "uk": "як задано, з обчисленими значеннями &lt;length&gt;"
+  },
+  "asSpecifiedWithVarsSubstituted": {
+    "uk": "як задано, з підставлянням змінних"
+  },
+  "autoForSmartphoneBrowsersSupportingInflation": {
+    "uk": "<code>auto</code> для смартфонів, що підтримують роздування, і <code>none</code> в інших випадках (і тоді не піддається змінам)."
+  },
+  "autoNonNegativeOrPercentage": {
+    "uk": "<code>auto</code>, або невід'ємне число чи відсоток, як задано"
+  },
+  "autoOrRectangle": {
+    "uk": "<code>auto</code>, якщо вказано як <code>auto</code>, інакше прямокутник з чотирма значеннями, кожне з яких <code>auto</code>, якщо вказано як <code>auto</code>, або обчислена довжина в іншому випадку"
+  },
+  "basicShape": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/shape-outside#interpoliatsiia\" title=\"Значення типу <basic-shape> інтерполюються як простий список. Список значень інтерполюється як довжина, відсотки або calc, де це можливо. Якщо значення списку – інших типів, але не ідентичні, то ці значення інтерполюються.\">базова фігура</a>"
+  },
+  "blockContainerElements": {
+    "uk": "блокові контейнерні елементи"
+  },
+  "blockContainers": {
+    "uk": "блокові контейнери"
+  },
+  "blockContainersAndMultiColumnContainers": {
+    "uk": "Блокові контейнери та багатоколонкові контейнери"
+  },
+  "blockContainersExceptMultiColumnContainers": {
+    "uk": "блокові контейнери, крім багатоколонкових контейнерів"
+  },
+  "blockContainersExceptTableWrappers": {
+    "uk": "блокові контейнери, крім рамок-обгорток таблиць"
+  },
+  "blockContainersFlexContainersGridContainers": {
+    "uk": "Блокові, гнучкі та сіткові контейнери"
+  },
+  "blockElementsInNormalFlow": {
+    "uk": "елементи блокового рівня в звичайному потоці кореневого елемента. Користувацькі агенти також можуть застосовувати це до інших елементів, наприклад, <code>table-row</code>."
+  },
+  "blockLevelBoxesAndAbsolutelyPositionedBoxesAndGridItems": {
+    "uk": "рамки блокового рівня, рамки з блоковим позиціювання та сіткові елементи"
+  },
+  "blockLevelElements": {
+    "uk": "елементи блокового рівня"
+  },
+  "blockSizeOfContainingBlock": {
+    "uk": "головний розмір контейнерного блока"
+  },
+  "boxElements": {
+    "uk": "рамкові елементи"
+  },
+  "byComputedValueType": {
+    "uk": "за типом обчисленого значення"
+  },
+  "byComputedValueTypeNormalAnimatesAsObliqueZeroDeg": {
+    "uk": "за типом обчисленого значення; <code>normal</code> анімується як <code>oblique 0deg</code>"
+  },
+  "canonicalOrder": {
+    "uk": "Канонічний порядок"
+  },
+  "childrenOfBoxElements": {
+    "uk": "дочірні елементи рамкових елементів"
+  },
+  "color": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/color_value#interpoliatsiia\" title=\"Значення типу даних <color> інтерполюються по кожній з їхніх складових – червоній, зеленій, синій, кожна з яких розглядається як дійсне число з рухомою комою. Зверніть увагу, що інтерполяція кольорів відбувається в просторі кольорів sRGBA з попереднім множенням на альфа-канал, щоб уникнути появи неочікуваних сірих кольорів.\">колір</a>"
+  },
+  "colorPlusThreeAbsoluteLengths": {
+    "uk": "колір плюс три абсолютні довжини"
+  },
+  "computedColor": {
+    "uk": "обчислений колір"
+  },
+  "consistsOfTwoDimensionKeywords": {
+    "uk": "Складається з двох ключових слів, по одному на кожну розмірність"
+  },
+  "consistsOfTwoKeywordsForOriginAndOffsets": {
+    "uk": "Складається з двох ключових слів, що представляють точку відліку та два зміщення від цієї точки, кожне з яких задано у вигляді абсолютної довжини (якщо задано &lt;length&gt;), інакше – у вигляді відсотків."
+  },
+  "continuous": {
+    "uk": "неперервний"
+  },
+  "createsStackingContext": {
+    "uk": "Утворює <a href=\"/uk/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context\">контекст нагромадження</a>"
+  },
+  "dependsOnLayoutModel": {
+    "uk": "залежить від моделі компонування"
+  },
+  "dependsOnUserAgent": {
+    "uk": "залежить від користувацького агента"
+  },
+  "discrete": {
+    "uk": "дискретне"
+  },
+  "discreteHiddenSwapAt0": {
+    "uk": "Дискретна поведінка, проте при анімації від <code>hidden</code> замінюється на кінцеве значення при прогресі &gt; 0, а не 0,5"
+  },
+  "discreteNoneSwapAt0": {
+    "uk": "Дискретна поведінка, проте при анімації від <code>none</code> замінюється на кінцеве значення при прогресі &gt; 0, а не 0,5"
+  },
+  "discreteSwapAt1": {
+    "uk": "Дискретна поведінка, проте замінюється на кінцеве значення при прогресі 1, а не 0,5"
+  },
+  "elementsForWhichSizeContainmentCanApply": {
+    "uk": "елементи, до яких може застосовуватися обмеження розміру"
+  },
+  "exclusionElements": {
+    "uk": "елементи виключення"
+  },
+  "filterList": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/filter#interpoliatsiia\" title=\"Якщо обидва фільтри мають списки функцій однакової довжини і без URL, то кожна функція інтерполюється згідно зі своїми специфічними правилами. Якщо вони мають різну довжину, то відсутні еквівалентні функції фільтрів з довшого списку додаються в кінець коротшого списку зі своїми усталеними значеннями, після чого всі функції фільтрів інтерполюються згідно зі своїми специфічними правилами. Якщо один з фільтрів – <code>none</code>, то він замінюється списком функцій іншого фільтра з використанням усталених значень функцій фільтра, після чого всі функції фільтрів інтерполюються згідно зі своїми специфічними правилами. В іншому випадку використовується дискретна інтерполяція.\">список функцій фільтрів</a>"
+  },
+  "flexContainers": {
+    "uk": "гнучкі контейнери"
+  },
+  "flexItemsAndAbsolutelyPositionedFlexContainerChildren": {
+    "uk": "гнучкі елементи та абсолютно позиційовані дочірні елементи гнучких контейнерів"
+  },
+  "flexItemsAndInFlowPseudos": {
+    "uk": "гнучкі елементи, в тому числі псевдоелементи в потоці"
+  },
+  "flexItemsGridItemsAbsolutelyPositionedContainerChildren": {
+    "uk": "гнучкі елементи, сіткові елементи та абсолютно позиційовані дочірні елементи гнучких і сіткових контейнерів"
+  },
+  "flexItemsGridItemsAndAbsolutelyPositionedBoxes": {
+    "uk": "гнучкі елементи, сіткові елементи та абсолютно позиційовані рамки"
+  },
+  "floats": {
+    "uk": "плаває"
+  },
+  "fontStretch": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/font-stretch#interpoliatsiia\" title=\"Значення розтягування шрифту інтерполюються по дискретних кроках. Інтерполяція відбувається так, ніби впорядковані значення є рівномірно розподіленими дійсними числами; результат округлюється до найближчого значення, причому значення, які рівновіддалені від двох значень, округлюються до більшого значення, тобто найбільш розширеного.\">розтягування шрифту</a>"
+  },
+  "fontWeight": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/font-weight#interpoliatsiia\" title=\"Значення жирності шрифту інтерполюються по дискретних кроках (кратних 100). Інтерполяція відбувається в просторі дійсних чисел і перетворюється на ціле шляхом округлення до найближчого кратного 100, причому значення, що знаходяться посередині між кратними 100, округлюються до більшого.\">грубість шрифту</a>"
+  },
+  "lpcNote": {
+    "uk": " коли обидва значення є довжинами, вони інтерполюються як довжини; коли обидва значення є відсотками, вони інтерполюються як відсотки; в інших випадках обидва значення перетворюються на функцію <code>calc()</code>, яка є сумою довжини та відсотків (кожне з цих значень може бути нулем), і кожна половина такої функції <code>calc()</code> інтерполюється як дійсне число."
+  },
+  "mapToRange0To1": {
+    "uk": "відображається в діапазон <code>[0,1]</code>"
+  },
+  "maxZoomFactor": {
+    "uk": "Найбільший припустимий множник збільшення. Множник збільшення 100% відповідає відсутності збільшення. Більші значення збільшують масштаб. Менші значення зменшують масштаб."
+  },
+  "media": {
+    "uk": "Пристрій"
+  },
+  "minZoomFactor": {
+    "uk": "Найменший допустимий множник збільшення. Множник збільшення 100% відповідає відсутності збільшення. Більші значення збільшують масштаб. Менші значення зменшують масштаб."
+  },
+  "multicolElements": {
+    "uk": "багатоколонкові елементи"
+  },
+  "multiColumnElementsFlexContainersGridContainers": {
+    "uk": "багатоколонкові елементи, гнучкі контейнери, сіткові контейнери"
+  },
+  "multilineFlexContainers": {
+    "uk": "багатолінійні гнучкі контейнери"
+  },
+  "no": {
+    "uk": "ні"
+  },
+  "noneButOverriddenInUserAgentCSS": {
+    "uk": "<code>none</code> (але це значення відкидається в CSS користувацького агента)"
+  },
+  "noneOrImageWithAbsoluteURI": {
+    "uk": "<code>none</code> або зображення з абсолютним URI"
+  },
+  "noneOrOrderedListOfIdentifiers": {
+    "uk": "<code>none</code> або впорядкований список ідентифікаторів"
+  },
+  "nonReplacedBlockAndInlineBlockElements": {
+    "uk": "незаміщені елементи блокового рівня та незаміщені рядково-блокові елементи"
+  },
+  "nonReplacedBlockElements": {
+    "uk": "незаміщені елементи <code>block</code> (крім елементів <code>table</code>), елементи <code>table-cell</code> і <code>inline-block</code>"
+  },
+  "nonReplacedElements": {
+    "uk": "незаміщені елементи"
+  },
+  "nonReplacedInlineElements": {
+    "uk": "незаміщені рядкові елементи"
+  },
+  "noPracticalInitialValue": {
+    "uk": "Робочого початкового значення немає."
+  },
+  "noPracticalMedia": {
+    "uk": "Для цього не існує відповідного пристрою."
+  },
+  "normalizedAngle": {
+    "uk": "нормалізований кут"
+  },
+  "notAnimatable": {
+    "uk": "Не анімується"
+  },
+  "number": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/number#interpoliatsiia\" title=\"Значення типу даних CSS <number> інтерполюються як дійсні числа з рухомою комою.\">число</a>"
+  },
+  "numberOrLength": {
+    "uk": "або число, або довжина"
+  },
+  "oneOrTwoValuesLengthAbsoluteKeywordsPercentages": {
+    "uk": "Одне або два значення, причому довжина стає абсолютною, а ключові слова переводяться у відсотки"
+  },
+  "oneToFourPercentagesOrAbsoluteLengthsPlusFill": {
+    "uk": "від одного до чотирьох відсоткових значень (як задано) або абсолютних довжин, плюс ключове слово <code>fill</code>, якщо задано"
+  },
+  "optimumValueOfAbsoluteLengthOrNormal": {
+    "uk": "оптимальне значення, що складається або з абсолютної довжини, або з ключового слова <code>normal</code>"
+  },
+  "orderOfAppearance": {
+    "uk": "порядок появи в формальній граматиці значень"
+  },
+  "percentageAsSpecifiedAbsoluteLengthOrNone": {
+    "uk": "або відсотки, як задано, або абсолютна довжина, або <code>none</code>"
+  },
+  "percentageAsSpecifiedOrAbsoluteLength": {
+    "uk": "або відсотки, як задано, або абсолютна довжина"
+  },
+  "percentageAutoOrAbsoluteLength": {
+    "uk": "або відсотки, або <code>auto</code>, або абсолютна довжина"
+  },
+  "percentageOrAbsoluteLengthPlusKeywords": {
+    "uk": "або відсотки, як задано, або абсолютна довжина, плюс ключові слова, якщо задані"
+  },
+  "percentages": {
+    "uk": "Відсоткові значення"
+  },
+  "percentagesOrLengthsFollowedByFill": {
+    "uk": "відсоткові значення або довжини, після яких в кінці стоїть ключове слово <code>fill</code>"
+  },
+  "perGrammar": {
+    "uk": "згідно з граматикою"
+  },
+  "position": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/position_value#interpoliatsiia\" title=\"Значення типу даних <position> інтерполюються незалежно для абсциси та ординати. Оскільки швидкість визначається однією <timing-function> для них обох, то точка буде рухатися по прямій.\">позиція</a>"
+  },
+  "positionedElements": {
+    "uk": "позиційовані елементи"
+  },
+  "rectangle": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/shape#interpoliatsiia\" title=\"Значення типу даних CSS <shape>, які є прямокутниками, інтерполюються по їх верхній, правій, нижній та лівій компоненті, кожна з яких розглядається як дійсне число з рухомою комою.\">прямокутник</a>"
+  },
+  "referToBorderBox": {
+    "uk": "стосується рамки меж елемента"
+  },
+  "referToContainingBlockHeight": {
+    "uk": "стосується висоти контейнерного блока"
+  },
+  "referToDimensionOfBorderBox": {
+    "uk": "стосується відповідної розмірності рамки меж"
+  },
+  "referToDimensionOfContentArea": {
+    "uk": "стосується відповідної розмірності області вмісту"
+  },
+  "referToElementFontSize": {
+    "uk": "стосується розміру шрифту самого елемента"
+  },
+  "referToFlexContainersInnerMainSize": {
+    "uk": "стосується внутрішньої головної розмірності гнучкого контейнера"
+  },
+  "referToHeightOfBackgroundPositioningAreaMinusBackgroundImageHeight": {
+    "uk": "стосується висоти області позиціювання фону мінус висота фонового зображення"
+  },
+  "referToHeightOfInitialViewport": {
+    "uk": "стосується висоти початкової області перегляду"
+  },
+  "referToLineBoxWidth": {
+    "uk": "обчислюється з урахуванням ширини рамки лінії"
+  },
+  "referToParentElementsFontSize": {
+    "uk": "стосується розміру шрифту батьківського елемента"
+  },
+  "referToReferenceBoxWhenSpecifiedOtherwiseBorderBox": {
+    "uk": "стосується опорної рамки, якщо задано, інакше – border-box"
+  },
+  "referToSizeOfBackgroundPositioningAreaMinusBackgroundImageSize": {
+    "uk": "стосується розміру області позиціювання фону мінус розмір фонового зображення; розмір стосується ширини для горизонтальних зміщень та висоти для вертикальних зміщень"
+  },
+  "referToSizeOfBorderImage": {
+    "uk": "стосується розміру зображення меж"
+  },
+  "referToSizeOfBoundingBox": {
+    "uk": "стосується розміру обмежувальної рамки"
+  },
+  "referToSizeOfContainingBlock": {
+    "uk": "стосується розміру контейнерного блока"
+  },
+  "referToSizeOfElement": {
+    "uk": "стосується розміру самої рамки"
+  },
+  "referToSizeOfFont": {
+    "uk": "так, стосується відповідного розміру шрифту тексту"
+  },
+  "referToSizeOfMaskBorderImage": {
+    "uk": "стосується розміру маски зображення меж"
+  },
+  "referToTotalPathLength": {
+    "uk": "стосується загальної довжини шляху"
+  },
+  "referToWidthAndHeightOfElement": {
+    "uk": "стосується ширини та висоти самого елемента"
+  },
+  "referToWidthOfAffectedGlyph": {
+    "uk": "стосується ширини відповідного гліфа"
+  },
+  "referToWidthOfBackgroundPositioningAreaMinusBackgroundImageWidth": {
+    "uk": "стосується ширини області позиціювання фону мінус ширина фонового зображення"
+  },
+  "referToWidthOfContainingBlock": {
+    "uk": "стосується ширини контейнерного блока"
+  },
+  "referToWidthOfInitialViewport": {
+    "uk": "стосується ширини початкової області перегляду"
+  },
+  "referToWidthOrHeightOfBorderImageArea": {
+    "uk": "стосується ширини або висоти області зображення меж"
+  },
+  "regardingHeightOfGeneratedBoxContainingBlockPercentages0": {
+    "uk": "Відсотки обчислюються з урахуванням висоти контейнерного блока рамки, що генерується. Якщо висота контейнерного блока не задана явно (тобто якщо вона залежить від висоти вмісту) і цей елемент не абсолютно позиціонований, то відсоткове значення вважається <code>0</code>."
+  },
+  "regardingHeightOfGeneratedBoxContainingBlockPercentagesNone": {
+    "uk": "Відсотки обчислюються з урахуванням висоти контейнерного блока рамки, що генерується. Якщо висота контейнерного блока не задана явно (тобто якщо вона залежить від висоти вмісту) і цей елемент не абсолютно позиціонований, то відсоткове значення вважається <code>none</code>."
+  },
+  "regardingHeightOfGeneratedBoxContainingBlockPercentagesRelativeToContainingBlock": {
+    "uk": "Відсотки обчислюються з урахуванням висоти контейнерного блока рамки, що генерується. Якщо висота контейнерного блока не задана явно (тобто якщо вона залежить від висоти вмісту) і цей елемент не абсолютно позиціонований, то таке значення обчислюється в <code>auto</code>. Відсоткова висота на кореневому елементі є відносною щодо початкового контейнерного блока."
+  },
+  "relatedAtRule": {
+    "uk": "Споріднена <a href=\"/uk/docs/Web/CSS/At-rule\">директива</a>"
+  },
+  "relativeToBackgroundPositioningArea": {
+    "uk": "відносне щодо області позиціювання фону"
+  },
+  "relativeToCorrespondingDimensionOfRelevantScrollport": {
+    "uk": "Відносне щодо відповідної розмірності відповідної області перегляду прокручення"
+  },
+  "relativeToMaskBorderImageArea": {
+    "uk": "відносне щодо ширини чи висоти області зображення меж маски"
+  },
+  "relativeToScrollContainerPaddingBoxAxis": {
+    "uk": "відносне щодо тієї ж осі рамки внутрішніх відступів прокрутного контейнера"
+  },
+  "relativeToTheScrollContainersScrollport": {
+    "uk": "відносне щодо області перегляду прокрутки прокрутного контейнера"
+  },
+  "relativeToTimelineRangeIfSpecifiedOtherwiseEntireTimeline": {
+    "uk": "Відносне щодо заданого іменованого діапазону часової шкали, якщо він заданий, інакше відносне щодо всієї часової шкали"
+  },
+  "relativeToWidthAndHeight": {
+    "uk": "відносне щодо ширини та висоти опорної рамки елемента"
+  },
+  "repeatableList": {
+    "uk": "повторюваний список"
+  },
+  "replacedElements": {
+    "uk": "заміщені елементи"
+  },
+  "rubyAnnotationsContainers": {
+    "uk": "контейнери анотацій рубі"
+  },
+  "rubyBasesAnnotationsBaseAnnotationContainers": {
+    "uk": "базові елементи рубі, анотації рубі, базові контейнери рубі, контейнери анотацій рубі"
+  },
+  "scrollContainers": {
+    "uk": "прокрутні контейнери"
+  },
+  "scrollingBoxes": {
+    "uk": "прокрутні рамки"
+  },
+  "seeProse": {
+    "uk": "дивіться текст"
+  },
+  "shadowList": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/box-shadow#interpoliatsiia\" title=\"Компоненти кольору, абсциси, ординати, розмиття та поширення (якщо це має зміст) списків тіней інтерполюються незалежно. Якщо значення внутрішнього заступу будь-якої пари тіней відрізняється в обох списках, то весь список не піддається інтерполяції. Якщо один список менший за інший, то він доповнюється прозорими тінями з усіма їхніми довжинами, заданими в 0, а його  значення внутрішнього заступу відповідає довшому списку.\">список тіней</a>"
+  },
+  "simpleList": {
+    "uk": "простий список з "
+  },
+  "simpleListOfLpc": {
+    "uk": "простий список з довжин, відсотків чи calc"
+  },
+  "simpleListOfLpcDifferenceLpc": {
+    "uk": "простий список з довжин, відсотків чи calc, за умови того, що єдині відмінності полягають у значеннях довжин, відсотків чи calc у списку"
+  },
+  "specifiedIntegerOrAbsoluteLength": {
+    "uk": "задане ціле число або абсолютна довжина"
+  },
+  "specifiedValueClipped0To1": {
+    "uk": "задане значення, затиснене в діапазон <code>[0,1]</code>"
+  },
+  "tableCaptionElements": {
+    "uk": "елементи підписів таблиць"
+  },
+  "tableCellElements": {
+    "uk": "елементи комірок таблиць"
+  },
+  "tableElements": {
+    "uk": "елементи <code>table</code> та <code>inline-table</code>"
+  },
+  "textAndBlockContainers": {
+    "uk": "текст і блокові контейнери"
+  },
+  "textElements": {
+    "uk": "текстові елементи"
+  },
+  "textFields": {
+    "uk": "текстові поля"
+  },
+  "theComputedLengthAndVisualBox": {
+    "uk": "обчислене значення &lt;length&gt; і ключове слово &lt;visual-box&gt;"
+  },
+  "theKeywordListStyleImageNoneOrComputedValue": {
+    "uk": "Ключове слово <code>none</code> або обчислене значення &lt;image&gt;"
+  },
+  "transform": {
+    "uk": "перетворення"
+  },
+  "transformableElements": {
+    "uk": "елементи, що піддаються перетворенню"
+  },
+  "translucentValuesRGBAOtherwiseRGB": {
+    "uk": "Якщо значення має прозорість, то обчисленим значенням буде відповідне <code>rgba()</code>. Якщо ні, то відповідне <code>rgb()</code>. Ключове слово <code>transparent</code> відображається як <code>rgba(0,0,0,0)</code>."
+  },
+  "\"\"": {
+    "uk": "\"\" (порожній рядок)"
+  },
+  "\". \"": {
+    "uk": "\". \" (крапка з пробілом)"
+  },
+  "twoAbsoluteLengths": {
+    "uk": "дві абсолютні довжини"
+  },
+  "uniqueOrder": {
+    "uk": "унікальний недвозначний порядок, визначений формальною граматикою"
+  },
+  "variesFromBrowserToBrowser": {
+    "uk": "Відрізняється в різних браузерах"
+  },
+  "visibility": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/visibility#interpoliatsiia\" title=\"Значення властивості CSS <visibility> інтерполюються, якщо початкове або кінцеве значення – visible. У цьому випадку всі значення функції хронометражу, рівні 1, видимі, а не рівні 1 – не видимі.\">видимість</a>"
+  },
+  "visual": {
+    "uk": "візуальне"
+  },
+  "visualInContinuousMediaNoEffectInOverflowColumns": {
+    "uk": "<code>visual</code>, але при перепервному виведенні не діє на колонки, що не вміщаються"
+  },
+  "yes": {
+    "uk": "так"
+  },
+  "zoomForTheTopLevelNoneForTheRest": {
+    "uk": "zoom для елемента вищого рівня, none для всіх інших елементів"
+  }
+}

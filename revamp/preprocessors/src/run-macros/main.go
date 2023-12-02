@@ -8,11 +8,19 @@ import (
 	"webdoky3/revamp/preprocessors/src/run-macros/runner"
 )
 
+var locale = "uk"
+
 func runMacrosInSection(registryInstance *registry.Registry, section *preprocessor.Section) error {
+	log.Printf("Running macros in section %s", section.Chapter.Path)
+	frontmatterData, err := get_section_frontmatter(section)
+	if err != nil {
+		return err
+	}
 	macrosRunner := runner.NewMacrosRunner(&environment.Environment{
-		Content: &section.Chapter.Content,
-		Locale:  "uk",
-		Path:    section.Chapter.Path,
+		Content:     &section.Chapter.Content,
+		Frontmatter: frontmatterData,
+		Locale:      locale,
+		Path:        section.Chapter.Path,
 	}, registryInstance)
 	section.Chapter.Content = macrosRunner.Run(section.Chapter.Content)
 	for _, subItem := range section.Chapter.SubItems {

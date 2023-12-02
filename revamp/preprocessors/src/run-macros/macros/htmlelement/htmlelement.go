@@ -1,4 +1,4 @@
-package macros
+package htmlelement
 
 import (
 	"errors"
@@ -41,7 +41,7 @@ func parseHtmlelementArgs(args string) (string, string, string, error) {
 	return elementName, displayName, anchor, nil
 }
 
-func htmlelement(env *environment.Environment, _ *registry.Registry, args string) (string, error) {
+func Htmlelement(env *environment.Environment, _ *registry.Registry, args string) (string, error) {
 	elementName, displayName, anchor, err := parseHtmlelementArgs(args)
 	if err != nil {
 		return "", err
