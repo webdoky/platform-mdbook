@@ -12,19 +12,19 @@ func allElementsExceptTableDisplayTypes(env *environment.Environment, reg *regis
 	if err != nil {
 		return "", err
 	}
-	tableCaptionWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	tableCaptionWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "table-caption",
 	})
 	if err != nil {
 		return "", err
 	}
-	tableWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	tableWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "table",
 	})
 	if err != nil {
 		return "", err
 	}
-	inlineTableWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	inlineTableWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "inline-table",
 	})
 	if err != nil {

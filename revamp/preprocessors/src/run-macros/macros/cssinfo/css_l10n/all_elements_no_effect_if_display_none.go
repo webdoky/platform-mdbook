@@ -12,7 +12,7 @@ func allElementsNoEffectIfDisplayNone(env *environment.Environment, reg *registr
 	if err != nil {
 		return "", err
 	}
-	noneWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	noneWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "none",
 	})
 	if err != nil {

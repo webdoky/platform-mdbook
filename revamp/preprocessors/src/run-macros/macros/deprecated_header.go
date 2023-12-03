@@ -42,7 +42,7 @@ func deprecated_header(environment *environment.Environment, registry *registry.
 	if err != nil {
 		return "", err
 	}
-	html, err := renderhtml.RenderDiv(&renderhtml.DivParams{Class: "notecard nonstandard", InnerHtml: template.HTML(h4Html + pHtml)})
+	html, err := renderhtml.RenderDiv(&renderhtml.DivParams{Class: "notecard deprecated", InnerHtml: template.HTML(h4Html + pHtml)})
 	if err != nil {
 		return "", err
 	}

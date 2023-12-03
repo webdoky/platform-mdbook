@@ -12,7 +12,7 @@ func allElementsExceptTableElementsWhenCollapse(env *environment.Environment, re
 	if err != nil {
 		return "", err
 	}
-	collapseWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	collapseWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "collapse",
 	})
 	if err != nil {

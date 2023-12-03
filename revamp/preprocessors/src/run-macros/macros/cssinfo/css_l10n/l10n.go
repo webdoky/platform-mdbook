@@ -158,6 +158,9 @@ var l10nData = map[string]map[string]func(env *environment.Environment, reg *reg
 	"twoAbsoluteLengthOrPercentages": {
 		"uk": twoAbsoluteLengthOrPercentages,
 	},
+	"xulImageElements": {
+		"uk": xulImageElements,
+	},
 }
 
 func HasKey(key string) bool {

@@ -8,8 +8,18 @@ import (
 )
 
 func extractTargetSection(content string, parentId string) (string, string, error) {
+	log.Printf("extractTargetSection: %s\n", parentId)
 	var i, j int
-	macroStartIndex := strings.Index(strings.ToLower(content), "{{embedlivesample")
+	// macroStartIndex := strings.Index(strings.ToLower(content), "{{embedlivesample")
+	macroStartIndex := -1
+	for _, line := range strings.Split(content, "\n") {
+		if strings.HasPrefix(strings.ToLower(line), "{{embedlivesample") && strings.Contains(line, parentId) {
+			macroStartIndex = strings.Index(content, line)
+		}
+	}
+	if macroStartIndex == -1 {
+		return "", "", errors.New("macro argument is wrong")
+	}
 	beforeMacro := content[:macroStartIndex]
 	macroAndAfter := content[macroStartIndex:]
 	lines := strings.Split(beforeMacro, "\n")
@@ -32,7 +42,6 @@ func extractTargetSection(content string, parentId string) (string, string, erro
 	}
 
 	if depth == 0 {
-		log.Println("ERROR")
 		return "", "", errors.New("macro argument is wrong")
 	}
 	j = strings.Index(macroAndAfter, strings.Repeat("#", depth))
@@ -41,5 +50,6 @@ func extractTargetSection(content string, parentId string) (string, string, erro
 	} else {
 		j += macroStartIndex
 	}
+	log.Printf("extractTargetSection indexes: %d %d\n", i, j)
 	return (content)[i:j], headerText, nil
 }

@@ -91,23 +91,21 @@ func Cssinfo(env *environment.Environment, reg *registry.Registry, _ string) (st
 			labelText: appliesToLabel,
 		})
 	}
-	if data.Inherited {
-		inheritedLink, err := renderhtml.RenderA(&renderhtml.AParams{
-			Href: "/" + env.Locale + "/docs/Web/CSS/Inheritance",
-			Text: "Успадковується",
-		})
-		if err != nil {
-			return "", err
-		}
-		inheritedContent, err := inherited(env, reg, data)
-		if err != nil {
-			return "", err
-		}
-		properties = append(properties, propertyItem{
-			content:   template.HTML(inheritedContent),
-			labelHtml: template.HTML(inheritedLink),
-		})
+	inheritedLink, err := renderhtml.RenderA(&renderhtml.AParams{
+		Href: "/" + env.Locale + "/docs/Web/CSS/Inheritance",
+		Text: "Успадковується",
+	})
+	if err != nil {
+		return "", err
 	}
+	inheritedContent, err := inherited(env, reg, data)
+	if err != nil {
+		return "", err
+	}
+	properties = append(properties, propertyItem{
+		content:   template.HTML(inheritedContent),
+		labelHtml: template.HTML(inheritedLink),
+	})
 	if data.Percentages == nil || data.Percentages[0] != "no" {
 		percentagesContent, err := percentages(env, reg, data)
 		if err != nil {

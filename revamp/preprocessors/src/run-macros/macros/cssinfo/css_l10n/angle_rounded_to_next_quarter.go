@@ -8,7 +8,7 @@ import (
 )
 
 func angleRoundedToNextQuarter(env *environment.Environment, reg *registry.Registry, _ string, _ string) (string, error) {
-	angleWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	angleWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "<angle>",
 	})
 	if err != nil {
@@ -21,13 +21,13 @@ func angleRoundedToNextQuarter(env *environment.Environment, reg *registry.Regis
 	if err != nil {
 		return "", err
 	}
-	zeroWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	zeroWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "0deg",
 	})
 	if err != nil {
 		return "", err
 	}
-	oneTurnWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	oneTurnWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "1turn",
 	})
 	if err != nil {

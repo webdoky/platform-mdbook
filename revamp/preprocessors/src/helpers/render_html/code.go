@@ -2,6 +2,7 @@ package renderhtml
 
 import (
 	"bytes"
+	"errors"
 	"html/template"
 	"log"
 	"strings"
@@ -9,8 +10,16 @@ import (
 
 var tCode *template.Template
 
-func RenderCode(params *WrapperParams) (string, error) {
+type CodeParams struct {
+	InnerHtml template.HTML
+	Text      string
+}
+
+func RenderCode(params *CodeParams) (string, error) {
 	var b bytes.Buffer
+	if (params.InnerHtml != "") && (params.Text != "") {
+		return "", errors.New("in a code tag, either InnerHtml or Text must be set")
+	}
 	err := tCode.Execute(&b, params)
 	if err != nil {
 		return "", err

@@ -19,7 +19,7 @@ type DivParams struct {
 func RenderDiv(params *DivParams) (string, error) {
 	var b bytes.Buffer
 	if (params.InnerHtml == "") == (params.Text == "") {
-		return "", errors.New("either InnerHtml or Text must be set")
+		return "", errors.New("in an div tag, either InnerHtml or Text must be set")
 	}
 	err := tDiv.Execute(&b, params)
 	if err != nil {

@@ -12,12 +12,11 @@ var tOl *template.Template
 
 type OlParams struct {
 	InnerHtml template.HTML
-	Text      string
 }
 
 func RenderOl(params *OlParams) (string, error) {
-	if (params.InnerHtml == "") == (params.Text == "") {
-		return "", errors.New("either InnerHtml or Text must be set")
+	if params.InnerHtml == "" {
+		return "", errors.New("innerHtml must be set")
 	}
 	var b bytes.Buffer
 	err := tOl.Execute(&b, params)

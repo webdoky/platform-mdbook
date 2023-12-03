@@ -26,7 +26,7 @@ func Svgelement(env *environment.Environment, reg *registry.Registry, args strin
 	basePath := "/" + env.Locale + "/docs/Web/SVG/Element/"
 	url := basePath + term
 	title := "<" + term + ">"
-	wrappedTitle, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	wrappedTitle, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: title,
 	})
 	if err != nil {

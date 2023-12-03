@@ -12,12 +12,11 @@ var tUl *template.Template
 
 type UlParams struct {
 	InnerHtml template.HTML
-	Text      string
 }
 
 func RenderUl(params *UlParams) (string, error) {
-	if (params.InnerHtml == "") == (params.Text == "") {
-		return "", errors.New("either InnerHtml or Text must be set")
+	if params.InnerHtml == "" {
+		return "", errors.New("InnerHtml must be set")
 	}
 	var b bytes.Buffer
 	err := tUl.Execute(&b, params)

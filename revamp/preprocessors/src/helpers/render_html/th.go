@@ -19,7 +19,7 @@ type ThParams struct {
 func RenderTh(params *ThParams) (string, error) {
 	var b bytes.Buffer
 	if (params.InnerHtml == "") == (params.Text == "") {
-		return "", errors.New("either InnerHtml or Text must be set")
+		return "", errors.New("in a th tag, either InnerHtml or Text must be set")
 	}
 	err := tTh.Execute(&b, params)
 	if err != nil {

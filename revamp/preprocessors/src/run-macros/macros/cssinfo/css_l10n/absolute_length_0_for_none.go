@@ -7,13 +7,13 @@ import (
 )
 
 func absoluteLength0ForNone(env *environment.Environment, reg *registry.Registry, _ string, _ string) (string, error) {
-	noneWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	noneWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "none",
 	})
 	if err != nil {
 		return "", err
 	}
-	zeroWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	zeroWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "0",
 	})
 	if err != nil {

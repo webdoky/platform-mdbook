@@ -8,13 +8,13 @@ import (
 )
 
 func allElementsUAsNotRequiredWhenCollapse(env *environment.Environment, reg *registry.Registry, _ string, _ string) (string, error) {
-	tableWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	tableWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "table",
 	})
 	if err != nil {
 		return "", err
 	}
-	inlineTableWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	inlineTableWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "inline-table",
 	})
 	if err != nil {
@@ -24,7 +24,7 @@ func allElementsUAsNotRequiredWhenCollapse(env *environment.Environment, reg *re
 	if err != nil {
 		return "", err
 	}
-	collapseWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	collapseWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "collapse",
 	})
 	if err != nil {

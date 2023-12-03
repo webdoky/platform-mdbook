@@ -8,25 +8,25 @@ import (
 )
 
 func asSpecifiedButVisibleOrClipReplacedToAutoOrHiddenIfOtherValueDifferent(env *environment.Environment, reg *registry.Registry, _ string, _ string) (string, error) {
-	visibleWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	visibleWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "visible",
 	})
 	if err != nil {
 		return "", err
 	}
-	clipWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	clipWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "clip",
 	})
 	if err != nil {
 		return "", err
 	}
-	autoWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	autoWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "auto",
 	})
 	if err != nil {
 		return "", err
 	}
-	hiddenWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	hiddenWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "hidden",
 	})
 	if err != nil {

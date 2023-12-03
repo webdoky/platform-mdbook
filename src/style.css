@@ -184,3 +184,18 @@ a[href*="//"]::before {
     --note-background: var(--background-warning);
     --note-theme: var(--icon-warning);
 }
+
+.notecard.nonstandard {
+    --note-background: var(--background-warning);
+    --note-theme: var(--icon-warning);
+}
+
+.notecard.deprecated {
+    --note-background: var(--background-warning);
+    --note-theme: var(--icon-warning);
+    border-left-color: red;
+}
+
+.hljs {
+    text-wrap: balance;
+}

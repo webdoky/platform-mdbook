@@ -8,13 +8,13 @@ import (
 )
 
 func asAutoOrColor(env *environment.Environment, reg *registry.Registry, _ string, _ string) (string, error) {
-	autoWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	autoWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "auto",
 	})
 	if err != nil {
 		return "", err
 	}
-	colorWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	colorWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "<color>",
 	})
 	if err != nil {

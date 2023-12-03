@@ -201,7 +201,7 @@
     "uk": "залежить від користувацького агента"
   },
   "discrete": {
-    "uk": "дискретне"
+    "uk": "дискретний"
   },
   "discreteHiddenSwapAt0": {
     "uk": "Дискретна поведінка, проте при анімації від <code>hidden</code> замінюється на кінцеве значення при прогресі &gt; 0, а не 0,5"
@@ -244,6 +244,114 @@
   },
   "fontWeight": {
     "uk": "<a href=\"/uk/docs/Web/CSS/font-weight#interpoliatsiia\" title=\"Значення жирності шрифту інтерполюються по дискретних кроках (кратних 100). Інтерполяція відбувається в просторі дійсних чисел і перетворюється на ціле шляхом округлення до найближчого кратного 100, причому значення, що знаходяться посередині між кратними 100, округлюються до більшого.\">грубість шрифту</a>"
+  },
+  "forLengthAbsoluteValueOtherwisePercentage": {
+    "uk": "для <a href=\"/uk/docs/Web/CSS/length\">length</a> – абсолютне значення, інакше – відсоткове"
+  },
+  "gridContainers": {
+    "uk": "сіткові контейнери"
+  },
+  "gridContainersWithMasonryLayout": {
+    "uk": "Сіткові контейнери з цегляним компонуванням"
+  },
+  "gridContainersWithMasonryLayoutInTheirBlockAxis": {
+    "uk": "Сіткові контейнери з цегляним компонуванням за своєю блоковою віссю"
+  },
+  "gridContainersWithMasonryLayoutInTheirInlineAxis": {
+    "uk": "Сіткові контейнери з цегляним компонуванням за своєю рядковою віссю"
+  },
+  "gridItemsAndBoxesWithinGridContainer": {
+    "uk": "сіткові елементи та абсолютно позиційовані рамки, чий контейнерний блок є сітковим контейнером"
+  },
+  "iframeElements": {
+    "uk": "елементи вбудованих фреймів"
+  },
+  "images": {
+    "uk": "зображення"
+  },
+  "inFlowBlockLevelElements": {
+    "uk": "елементи блокового рівня, що перебувають у потоці"
+  },
+  "inFlowChildrenOfBoxElements": {
+    "uk": "дочірні елементи рамкових елементів, що перебувають у потоці"
+  },
+  "inlineAxisHorizontalInXUL": {
+    "uk": "<code>inline-axis</code> (<code>horizontal</code> в <a href=\"/uk/docs/Mozilla/Tech/XUL\">XUL</a>)"
+  },
+  "inlineBoxesAndBlockContainers": {
+    "uk": "Рядкові рамки та блокові контейнери"
+  },
+  "inlineLevelAndTableCellElements": {
+    "uk": "елементи рядкового рівня та комірки таблиць"
+  },
+  "inlineSizeOfContainingBlock": {
+    "uk": "рядкова розмірність контейнерного блока"
+  },
+  "integer": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/integer#interpoliatsiia\" title=\"Значення типу даних CSS <integer> інтерполюються по дискретних кроках. Інтерполяція відбувається так, ніби впорядковані значення є дійсними числами з рухомою комою, а дискретне значення отримується за допомогою округлення до меншого.\">ціле число</a>"
+  },
+  "interactive": {
+    "uk": "інтерактивний"
+  },
+  "invertForTranslucentColorRGBAOtherwiseRGB": {
+    "uk": "Для ключового слова <code>invert</code> обчислене значення – <code>invert</code>. Для значення кольору, якщо значення має прозорість, обчислене значення буде відповідним <code>rgba()</code>. Якщо прозорості немає, то це значення буде відповідним <code>rgb()</code>. Ключове слово <code>transparent</code> відображається в <code>rgba(0,0,0,0)</code>."
+  },
+  "invertOrCurrentColor": {
+    "uk": "<code>invert</code> для браузерів, що підтримують це, а для інших – <code>currentColor</code>"
+  },
+  "keywordOrNumericalValueBolderLighterTransformedToRealValue": {
+    "uk": "ключове слово або числове значення, як задано, з <code>bolder</code> та <code>lighter</code>, перетвореними на дійсне значення"
+  },
+  "keywordPlusIntegerIfDigits": {
+    "uk": "задане ключове слово, плюс ціле число, якщо 'digits'"
+  },
+  "length": {
+    "uk": "<a href=\"/uk/docs/Web/CSS/length#interpoliatsiia\" title=\"Значення типу даних CSS <length> інтерполюються як дійсні числа з рухомою комою.\">довжина</a>"
+  },
+  "lengthAbsolutePercentageAsSpecifiedOtherwiseAuto": {
+    "uk": "якщо задано як довжина, то відповідна абсолютна довжина; якщо задано як відсотки, то задане значення; інакше – <code>auto</code>"
+  },
+  "lengthOrPercentageBeforeKeywordIfBothPresent": {
+    "uk": "довжина або відсотки перед ключовим словом, якщо є вони обидва."
+  },
+  "lengthOrPercentageBeforeKeywords": {
+    "uk": "Довжина або відсотки перед ключовими словами, якщо присутні вони обидва. Якщо присутні декілька ключових слів, вони з'являються в тому ж порядку, що і в формальній граматиці."
+  },
+  "lengthsAsPercentages": {
+    "uk": "Довжини можуть бути задані у вигляді відсотків"
+  },
+  "listEachItemConsistingOfAbsoluteLengthPercentageAndOrigin": {
+    "uk": "Список, кожен елемент якого складається з: зсуву, заданого як комбінація абсолютної довжини та відсотків, плюс ключове слово початку координат"
+  },
+  "listEachItemConsistingOfNormalLengthPercentageOrNameLengthPercentage": {
+    "uk": "Список, кожен елемент якого може бути 'normal', довжиною відсотків або назвою часового діапазону та відсотковою довжиною"
+  },
+  "listEachItemConsistingOfPairsOfAutoOrLengthPercentage": {
+    "uk": "Список, кожен елемент якого може бути 'auto' або відсотковою довжиною"
+  },
+  "listEachItemHasTwoKeywordsOnePerDimension": {
+    "uk": "список, кожен елемент якого складається з двох ключових слів, по одному на кожну розмірність"
+  },
+  "listEachItemIdentifierOrNoneAuto": {
+    "uk": "список, кожен елемент якого – чутливий до регістру ідентифікатор CSS або ключові слова <code>none</code>, <code>auto</code>"
+  },
+  "listEachItemTwoKeywordsOriginOffsets": {
+    "uk": "список, кожен елемент якого складається з двох ключових слів, що представляють початок координат і два зміщення від нього, кожне з яких задано у вигляді абсолютної довжини (якщо задано як <a href=\"/uk/docs/Web/CSS/length\">length</a>), інакше – у вигляді відсотків."
+  },
+  "listItems": {
+    "uk": "елементи списку"
+  },
+  "listSeparator": {
+    "uk": ", "
+  },
+  "logicalHeightOfContainingBlock": {
+    "uk": "логічна висота контейнерного блока"
+  },
+  "logicalWidthOfContainingBlock": {
+    "uk": "логічна ширина контейнерного блока"
+  },
+  "logicalHeightOrWidthOfContainingBlock": {
+    "uk": "відносне щодо розміру контейнерного блока за відповідною віссю (наприклад, ширина для лівого або правого, висота для верхнього або нижнього)"
   },
   "lpcNote": {
     "uk": " коли обидва значення є довжинами, вони інтерполюються як довжини; коли обидва значення є відсотками, вони інтерполюються як відсотки; в інших випадках обидва значення перетворюються на функцію <code>calc()</code>, яка є сумою довжини та відсотків (кожне з цих значень може бути нулем), і кожна половина такої функції <code>calc()</code> інтерполюється як дійсне число."

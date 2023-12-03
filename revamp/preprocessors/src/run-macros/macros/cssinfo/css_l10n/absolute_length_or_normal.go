@@ -7,7 +7,7 @@ import (
 )
 
 func absoluteLengthOrNormal(env *environment.Environment, reg *registry.Registry, _ string, _ string) (string, error) {
-	normalWrap, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	normalWrap, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: "normal",
 	})
 	if err != nil {

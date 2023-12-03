@@ -2,6 +2,7 @@ package cssxref
 
 import (
 	"errors"
+	"html"
 	"html/template"
 	"regexp"
 	"strings"
@@ -11,7 +12,7 @@ import (
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
 )
 
-var ANGLES_TYPE_SLUG_REGEX = regexp.MustCompile(`&lt;(.*)&gt;`)
+var ANGLES_TYPE_SLUG_REGEX = regexp.MustCompile(`<(.*)>`)
 
 func parseCssxrefArgs(args string) (string, string, string, error) {
 	// Split the args string into a slice of strings
@@ -36,9 +37,9 @@ func parseCssxrefArgs(args string) (string, string, string, error) {
 	default:
 		return "", "", "", errors.New("too many arguments")
 	}
-	// if displayName == "" {
-	// 	displayName = slug
-	// }
+	if displayName == "" {
+		displayName = slug
+	}
 	return slug, displayName, anchor, nil
 }
 
@@ -47,29 +48,7 @@ func Cssxref(env *environment.Environment, reg *registry.Registry, args string) 
 	if err != nil {
 		return "", err
 	}
-	basePath := "/" + env.Locale + "/docs/Web/CSS/"
-	urlWithoutAnchor := basePath + slug
-	url := urlWithoutAnchor
-	if anchor != "" {
-		url += "#" + anchor
-	}
-	if displayName == "" {
-
-		frontmatterData, err := helpers.ExtractFrontmatterData(*env.Content)
-		if err != nil {
-			return "", err
-		}
-		switch frontmatterData.PageType {
-		case "css-function":
-			displayName = slug + "()"
-		case "css-type":
-			if !strings.HasPrefix(slug, "<") && !strings.HasSuffix(slug, ">") {
-				displayName = "<" + slug + ">"
-			}
-		default:
-			displayName = slug
-		}
-	}
+	slug = html.UnescapeString(slug)
 	switch slug {
 	case "<color>":
 		slug = "color_value"
@@ -79,6 +58,30 @@ func Cssxref(env *environment.Environment, reg *registry.Registry, args string) 
 		slug = "position_value"
 	default:
 		slug = ANGLES_TYPE_SLUG_REGEX.ReplaceAllString(slug, "$1")
+	}
+	basePath := "/" + env.Locale + "/docs/Web/CSS/"
+	urlWithoutAnchor := basePath + slug
+	url := urlWithoutAnchor
+	if anchor != "" {
+		url += "#" + anchor
+	}
+	if displayName == "" {
+		frontmatterData, err := helpers.GetFrontmatterDataBySlug("web/css/"+slug, env.Locale)
+		if err != nil {
+			return "", err
+		}
+		if frontmatterData != nil {
+			switch frontmatterData.PageType {
+			case "css-function":
+				displayName = slug + "()"
+			case "css-type":
+				if !strings.HasPrefix(slug, "<") && !strings.HasSuffix(slug, ">") {
+					displayName = "<" + slug + ">"
+				}
+			default:
+				displayName = slug
+			}
+		}
 	}
 	aParams := renderhtml.AParams{
 		Href:      url,

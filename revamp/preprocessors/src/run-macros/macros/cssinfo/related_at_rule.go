@@ -10,7 +10,7 @@ func related_at_rule(env *environment.Environment, atRuleName string) (string, e
 	if atRuleName == "" {
 		return "", nil
 	}
-	code, err := renderhtml.RenderCode(&renderhtml.WrapperParams{
+	code, err := renderhtml.RenderCode(&renderhtml.CodeParams{
 		Text: atRuleName,
 	})
 	if err != nil {
