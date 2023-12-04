@@ -11,7 +11,7 @@ func applyingToMultiple(_ *environment.Environment, _ *registry.Registry, arg1 s
 		return "", errors.New("arg1 is empty")
 	}
 	if arg2 == "" {
-		return "", errors.New("arg2 is empty")
+		return arg1, nil
 	}
 	return arg1 + ". Також застосовується до " + arg2, nil
 }

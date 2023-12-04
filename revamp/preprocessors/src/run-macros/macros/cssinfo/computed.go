@@ -10,7 +10,7 @@ func computed(env *environment.Environment, reg *registry.Registry, data *CssDat
 		return "", nil
 	}
 	if len(data.Computed) == 1 {
-		return as_single(env, reg, data, data.Computed[0])
+		return as_single(env, reg, data, data.Computed[0], false)
 	}
-	return as_longhands(env, reg, data.Computed)
+	return as_longhands(env, reg, data.Computed, computed)
 }

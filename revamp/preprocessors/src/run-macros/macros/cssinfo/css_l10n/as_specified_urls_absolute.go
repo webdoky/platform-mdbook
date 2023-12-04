@@ -11,5 +11,5 @@ func asSpecifiedURLsAbsolute(env *environment.Environment, reg *registry.Registr
 	if err != nil {
 		return "", err
 	}
-	return "як задано, але з " + urlRef + ", зробленими абсолютними", nil
+	return "як задано, але зі значеннями " + urlRef + ", зробленими абсолютними", nil
 }

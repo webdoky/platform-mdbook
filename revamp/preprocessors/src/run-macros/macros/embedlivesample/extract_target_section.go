@@ -41,7 +41,7 @@ func extractTargetSection(content string, parentId string) (string, string, erro
 		}
 	}
 
-	if depth == 0 {
+	if depth == 0 || i == 0 {
 		return "", "", errors.New("macro argument is wrong")
 	}
 	j = strings.Index(macroAndAfter, strings.Repeat("#", depth))

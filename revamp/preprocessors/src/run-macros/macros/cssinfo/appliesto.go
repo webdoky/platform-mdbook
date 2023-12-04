@@ -9,5 +9,5 @@ func appliesto(env *environment.Environment, reg *registry.Registry, data *CssDa
 	if data.AppliesTo == "" {
 		return "", nil
 	}
-	return as_single(env, reg, data, data.AppliesTo)
+	return as_single(env, reg, data, data.AppliesTo, true)
 }

@@ -17,7 +17,7 @@ type TdParams struct {
 
 func RenderTd(params *TdParams) (string, error) {
 	var b bytes.Buffer
-	if (params.InnerHtml == "") == (params.Text == "") {
+	if (params.InnerHtml != "") && (params.Text != "") {
 		return "", errors.New("in a td tag, either InnerHtml or Text must be set")
 	}
 	err := tTd.Execute(&b, params)

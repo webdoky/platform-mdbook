@@ -37,9 +37,6 @@ func parseCssxrefArgs(args string) (string, string, string, error) {
 	default:
 		return "", "", "", errors.New("too many arguments")
 	}
-	if displayName == "" {
-		displayName = slug
-	}
 	return slug, displayName, anchor, nil
 }
 
@@ -81,6 +78,8 @@ func Cssxref(env *environment.Environment, reg *registry.Registry, args string) 
 			default:
 				displayName = slug
 			}
+		} else {
+			displayName = slug
 		}
 	}
 	aParams := renderhtml.AParams{

@@ -35,5 +35,5 @@ func animationType(env *environment.Environment, reg *registry.Registry, data *C
 		}
 		return strings.Join(parsedValues, listSeparator), nil
 	}
-	return as_longhands(env, reg, data.AnimationType)
+	return as_longhands(env, reg, data.AnimationType, animationType)
 }

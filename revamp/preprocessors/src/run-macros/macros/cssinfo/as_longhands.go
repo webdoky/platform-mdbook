@@ -2,6 +2,7 @@ package cssinfo
 
 import (
 	"html/template"
+	"log"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/macros/cssinfo/css_l10n"
@@ -9,7 +10,8 @@ import (
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
 )
 
-func as_longhands(env *environment.Environment, reg *registry.Registry, values []string) (string, error) {
+func as_longhands(env *environment.Environment, reg *registry.Registry, values []string, get_nested func(*environment.Environment, *registry.Registry, *CssData) (string, error)) (string, error) {
+	log.Printf("as_longhands: %v", values)
 	asLonghands, err := css_l10n.Localize(env, reg, "asLonghands", "", "")
 	if err != nil {
 		return "", err
@@ -25,12 +27,16 @@ func as_longhands(env *environment.Environment, reg *registry.Registry, values [
 		if err != nil {
 			return "", err
 		}
+		longhandData, err := get_mdn_data("properties", singleInitial)
+		if err != nil {
+			return "", err
+		}
+		longHand, err := get_nested(env, reg, longhandData)
+		if err != nil {
+			return "", err
+		}
 		listItem, err := renderhtml.RenderLi(&renderhtml.LiParams{
-			InnerHtml: template.HTML(ref + ": TODO"),
-			// (Object.prototype.hasOwnProperty.call(data.properties, longhand) ?
-			// await getValueOutput(data.properties[longhand], property) :
-			// replacePlaceholders(formattedError,
-			// 	[localize(cssLocalStrings, "missing")]))
+			InnerHtml: template.HTML(ref + ": " + longHand),
 		})
 		if err != nil {
 			return "", err

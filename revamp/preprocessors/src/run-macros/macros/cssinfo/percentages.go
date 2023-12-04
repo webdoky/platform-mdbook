@@ -10,7 +10,7 @@ func percentages(env *environment.Environment, reg *registry.Registry, data *Css
 		return "", nil
 	}
 	if len(data.Percentages) == 1 {
-		return as_single(env, reg, data, data.Percentages[0])
+		return as_single(env, reg, data, data.Percentages[0], false)
 	}
-	return as_longhands(env, reg, data.Percentages)
+	return as_longhands(env, reg, data.Percentages, percentages)
 }

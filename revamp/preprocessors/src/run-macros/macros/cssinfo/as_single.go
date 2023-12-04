@@ -7,7 +7,7 @@ import (
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
 )
 
-func as_single(env *environment.Environment, reg *registry.Registry, data *CssData, value string) (string, error) {
+func as_single(env *environment.Environment, reg *registry.Registry, data *CssData, value string, includeAlso bool) (string, error) {
 	keywords := strings.Split(value, ", ")
 	localizedKeywords := []string{}
 	for _, keyword := range keywords {
@@ -15,11 +15,18 @@ func as_single(env *environment.Environment, reg *registry.Registry, data *CssDa
 		if err != nil {
 			return "", err
 		}
+		// if localizedKeyword != keyword {
+		// 	log.Printf("Localized keyword %s: %s", keyword, localizedKeyword)
+		// }
 		localizedKeywords = append(localizedKeywords, localizedKeyword)
+	}
+	result := strings.Join(localizedKeywords, ", ")
+	if !includeAlso {
+		return result, nil
 	}
 	alsoAppliesToOutput, err := also_applies_to(env, reg, data)
 	if err != nil {
 		return "", err
 	}
-	return strings.Join(localizedKeywords, ", ") + string(alsoAppliesToOutput), nil
+	return css_l10n.Localize(env, reg, "applyingToMultiple", result, alsoAppliesToOutput)
 }

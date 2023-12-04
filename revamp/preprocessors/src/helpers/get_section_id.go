@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"html"
 	"regexp"
 	"strings"
 
@@ -10,6 +11,7 @@ import (
 var CHARACTERS_TO_REMOVE = regexp.MustCompile(`[^a-z0-9-]`)
 
 func GetSectionId(text string) string {
+	text = html.UnescapeString(text)
 	text = transliteration.UkrToLat(text)
 	text = strings.ToLower(text)
 	text = strings.ReplaceAll(text, " ", "-")

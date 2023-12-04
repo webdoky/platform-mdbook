@@ -7,7 +7,7 @@ import (
 )
 
 func also_applies_to(env *environment.Environment, reg *registry.Registry, data *CssData) (string, error) {
-	if data.AlsoAppliesTo == nil || len(data.AlsoAppliesTo) == 0 {
+	if len(data.AlsoAppliesTo) == 0 {
 		return "", nil
 	}
 	// Remove '::placeholder' from array to avoid displaying it,
