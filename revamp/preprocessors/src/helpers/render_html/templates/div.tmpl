@@ -1,1 +1,3 @@
-<div class="{{.Class}}">{{if .InnerHtml}}{{.InnerHtml}}{{else}}{{.Text}}{{end}}</div>
+<div class="{{.Class}}"
+{{ range $key, $value := .Data }} data-{{ $key }}="{{ $value }}"{{ end }}
+>{{if .InnerHtml}}{{.InnerHtml}}{{else}}{{.Text}}{{end}}</div>

@@ -2,6 +2,7 @@ package macros
 
 import (
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
+	"webdoky3/revamp/preprocessors/src/run-macros/macros/compat"
 	"webdoky3/revamp/preprocessors/src/run-macros/macros/cssinfo"
 	"webdoky3/revamp/preprocessors/src/run-macros/macros/cssxref"
 	"webdoky3/revamp/preprocessors/src/run-macros/macros/embedlivesample"
@@ -11,6 +12,7 @@ import (
 )
 
 var MacrosIndex = map[string]func(*environment.Environment, *registry.Registry, string) (string, error){
+	"compat":                 compat.Compat,
 	"cssinfo":                cssinfo.Cssinfo,
 	"cssref":                 blank,
 	"cssxref":                cssxref.Cssxref,
