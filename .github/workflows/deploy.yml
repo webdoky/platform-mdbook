@@ -109,7 +109,7 @@ jobs:
                   name: build
                   path: book
     populate-algolia:
-        needs: [build-revamp]
+        needs: [build, build-revamp]
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -120,6 +120,10 @@ jobs:
               with:
                   name: revamp
                   path: revamp/exe
+            - uses: actions/download-artifact@v3
+              with:
+                  name: build
+                  path: book
             - run: chmod +x ./revamp/exe/populate-algolia
             - run: ./revamp/exe/populate-algolia
     deploy:
