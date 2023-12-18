@@ -4,7 +4,8 @@ import (
 	"log"
 	"path/filepath"
 	"sort"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	"webdoky3/revamp/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 
 	"golang.org/x/text/collate"
 	"golang.org/x/text/language"
@@ -22,7 +23,7 @@ func GetSummaryItemFromFolder(folderPath string, sourceFolderPath string) (*Summ
 	log.Println("Getting summary item from folder: " + folderPath)
 	summaryItem := SummaryItem{sub_items: []*SummaryItem{}}
 	indexMdPath := folderPath + "/index.md"
-	doesIndexMdExist := helpers.DoesFileExist(indexMdPath)
+	doesIndexMdExist := preprocessor_helpers.DoesFileExist(indexMdPath)
 	var err error
 	if doesIndexMdExist {
 		summaryItem.path, err = filepath.Rel(sourceFolderPath, indexMdPath)
@@ -40,7 +41,7 @@ func GetSummaryItemFromFolder(folderPath string, sourceFolderPath string) (*Summ
 		log.Println("Index.md does not exist in folder: " + folderPath)
 		return nil, nil
 	}
-	files := helpers.GetFilesInFolder(folderPath)
+	files := preprocessor_helpers.GetFilesInFolder(folderPath)
 	// log.Printf("Files in folder: %d", len(files))
 	for _, file := range files {
 		if file.IsDir() {

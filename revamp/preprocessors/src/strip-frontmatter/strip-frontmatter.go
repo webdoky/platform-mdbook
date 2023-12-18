@@ -2,12 +2,12 @@ package main
 
 import (
 	"log"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	"webdoky3/revamp/preprocessors/src/preprocessor"
 )
 
 func removeFrontmatterFromSection(section *preprocessor.Section) {
-	section.Chapter.Content = helpers.RemoveFrontmatter(section.Chapter.Content)
+	section.Chapter.Content = preprocessor_helpers.RemoveFrontmatter(section.Chapter.Content)
 	for _, subItem := range section.Chapter.SubItems {
 		if subItem.IsSeparator {
 			continue

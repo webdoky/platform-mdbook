@@ -4,7 +4,7 @@ import (
 	"errors"
 	"html/template"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
@@ -15,7 +15,7 @@ func parseSvgelementArgs(args string) (string, error) {
 	if len(argsSlice) < 1 {
 		return "", errors.New("not enough arguments")
 	}
-	return helpers.UnwrapString(argsSlice[0]), nil
+	return preprocessor_helpers.UnwrapString(argsSlice[0]), nil
 }
 
 func Svgelement(env *environment.Environment, reg *registry.Registry, args string) (string, error) {

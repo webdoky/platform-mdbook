@@ -3,7 +3,7 @@ package macros
 import (
 	"html/template"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
@@ -13,7 +13,7 @@ func parseDeprecated_headerArgs(args string) (string, error) {
 	argSlice := strings.Split(args, ",")
 	var version string
 	if len(argSlice) >= 1 {
-		version = helpers.UnwrapString(argSlice[0])
+		version = preprocessor_helpers.UnwrapString(argSlice[0])
 	}
 	// if version starts with a digit, prepend "gecko " to it
 	if len(version) > 0 && version[0] >= '0' && version[0] <= '9' {

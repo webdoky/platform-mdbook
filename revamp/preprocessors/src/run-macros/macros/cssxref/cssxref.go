@@ -6,7 +6,7 @@ import (
 	"html/template"
 	"regexp"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
@@ -27,13 +27,13 @@ func parseCssxrefArgs(args string) (string, string, string, error) {
 	case 0:
 		return "", "", "", errors.New("no arguments")
 	case 3:
-		anchor = strings.TrimPrefix(helpers.UnwrapString(argSlice[2]), "#")
+		anchor = strings.TrimPrefix(preprocessor_helpers.UnwrapString(argSlice[2]), "#")
 		fallthrough
 	case 2:
-		displayName = helpers.UnwrapString(argSlice[1])
+		displayName = preprocessor_helpers.UnwrapString(argSlice[1])
 		fallthrough
 	case 1:
-		slug = helpers.UnwrapString(argSlice[0])
+		slug = preprocessor_helpers.UnwrapString(argSlice[0])
 	default:
 		return "", "", "", errors.New("too many arguments")
 	}
@@ -63,7 +63,7 @@ func Cssxref(env *environment.Environment, reg *registry.Registry, args string) 
 		url += "#" + anchor
 	}
 	if displayName == "" {
-		frontmatterData, err := helpers.GetFrontmatterDataBySlug("web/css/"+slug, env.Locale)
+		frontmatterData, err := preprocessor_helpers.GetFrontmatterDataBySlug("web/css/"+slug, env.Locale)
 		if err != nil {
 			return "", err
 		}
@@ -84,7 +84,7 @@ func Cssxref(env *environment.Environment, reg *registry.Registry, args string) 
 	}
 	aParams := renderhtml.AParams{
 		Href:      url,
-		InnerHtml: template.HTML(helpers.WrapAsCode(displayName)),
+		InnerHtml: template.HTML(preprocessor_helpers.WrapAsCode(displayName)),
 	}
 	aHtml, err := renderhtml.RenderA(&aParams)
 	if err != nil {

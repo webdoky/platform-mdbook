@@ -4,7 +4,7 @@ import (
 	"errors"
 	"html/template"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
@@ -15,7 +15,7 @@ func parseXulelemArgs(args string) (string, error) {
 	if len(argSlice) < 1 {
 		return "", errors.New("no arguments")
 	}
-	elementName := helpers.UnwrapString(argSlice[0])
+	elementName := preprocessor_helpers.UnwrapString(argSlice[0])
 	return elementName, nil
 }
 

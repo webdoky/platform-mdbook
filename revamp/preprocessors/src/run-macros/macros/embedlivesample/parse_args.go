@@ -5,7 +5,7 @@ import (
 	"log"
 	"strconv"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 )
 
 func parseEmbedlivesampleArgs(args string) (string, string, string, string, error) {
@@ -23,20 +23,20 @@ func parseEmbedlivesampleArgs(args string) (string, string, string, string, erro
 	case 5:
 		fallthrough
 	case 4:
-		screenshotUrl = helpers.UnwrapString(argSlice[3])
+		screenshotUrl = preprocessor_helpers.UnwrapString(argSlice[3])
 		fallthrough
 	case 3:
-		height = helpers.UnwrapString(argSlice[2])
+		height = preprocessor_helpers.UnwrapString(argSlice[2])
 		fallthrough
 	case 2:
-		width = helpers.UnwrapString(argSlice[1])
+		width = preprocessor_helpers.UnwrapString(argSlice[1])
 		fallthrough
 	case 1:
-		parentId = helpers.UnwrapString(argSlice[0])
+		parentId = preprocessor_helpers.UnwrapString(argSlice[0])
 	default:
 		return "", "", "", "", errors.New("too many arguments")
 	}
-	parentId = helpers.GetSectionId(parentId)
+	parentId = preprocessor_helpers.GetSectionId(parentId)
 	if height != "" {
 		// If height is less than MIN_HEIGHT, set it to MIN_HEIGHT
 		heightInt, err := strconv.Atoi(height)

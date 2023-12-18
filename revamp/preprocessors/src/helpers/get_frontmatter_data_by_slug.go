@@ -1,11 +1,12 @@
-package helpers
+package preprocessor_helpers
 
 import (
 	"os"
 	"strings"
+	"webdoky3/revamp/helpers"
 )
 
-func GetFrontmatterDataBySlug(slug string, locale string) (*FrontmatterData, error) {
+func GetFrontmatterDataBySlug(slug string, locale string) (*helpers.FrontmatterData, error) {
 	// try to read markdown file from "content" directory
 	// if file does not exist, try to read markdown file from "original-content" directory
 	// if file does not exist, return error
@@ -32,5 +33,5 @@ func GetFrontmatterDataBySlug(slug string, locale string) (*FrontmatterData, err
 			return nil, nil
 		}
 	}
-	return ExtractFrontmatterData(markdown)
+	return helpers.ExtractFrontmatterData(markdown)
 }

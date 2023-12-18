@@ -1,4 +1,4 @@
-package helpers
+package preprocessor_helpers
 
 func UnwrapBoolean(s string) bool {
 	s = UnwrapString(s)

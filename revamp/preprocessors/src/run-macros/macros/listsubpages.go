@@ -5,7 +5,7 @@ import (
 	"html/template"
 	"log"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/preprocessor"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
@@ -21,18 +21,18 @@ func parseListsubpagesArgs(args string) (string, int, bool, bool, error) {
 	}
 	var path string
 	if len(argSlice) >= 1 {
-		path = helpers.UnwrapString(argSlice[0])
+		path = preprocessor_helpers.UnwrapString(argSlice[0])
 	}
 	depth := 1
 	if len(argSlice) >= 2 {
-		depth = helpers.UnwrapInt(argSlice[1])
+		depth = preprocessor_helpers.UnwrapInt(argSlice[1])
 	}
 	var reverse, ordered bool
 	if len(argSlice) >= 3 {
-		reverse = helpers.UnwrapBoolean(argSlice[2])
+		reverse = preprocessor_helpers.UnwrapBoolean(argSlice[2])
 	}
 	if len(argSlice) >= 4 {
-		ordered = helpers.UnwrapBoolean(argSlice[3])
+		ordered = preprocessor_helpers.UnwrapBoolean(argSlice[3])
 	}
 	log.Printf("path: %q, depth: %d, reverse: %v, ordered: %v", path, depth, reverse, ordered)
 	return path, depth, reverse, ordered, nil

@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	"webdoky3/revamp/helpers"
 	"webdoky3/revamp/preprocessors/src/preprocessor"
 )
 

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"html/template"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
@@ -25,13 +25,13 @@ func parseHtmlelementArgs(args string) (string, string, string, error) {
 	case 0:
 		return "", "", "", errors.New("no arguments")
 	case 3:
-		anchor = strings.TrimPrefix(helpers.UnwrapString(argSlice[2]), "#")
+		anchor = strings.TrimPrefix(preprocessor_helpers.UnwrapString(argSlice[2]), "#")
 		fallthrough
 	case 2:
-		displayName = helpers.UnwrapString(argSlice[1])
+		displayName = preprocessor_helpers.UnwrapString(argSlice[1])
 		fallthrough
 	case 1:
-		elementName = strings.ToLower(helpers.UnwrapString(argSlice[0]))
+		elementName = strings.ToLower(preprocessor_helpers.UnwrapString(argSlice[0]))
 	default:
 		return "", "", "", errors.New("too many arguments")
 	}
@@ -56,7 +56,7 @@ func Htmlelement(env *environment.Environment, _ *registry.Registry, args string
 		Href: href,
 	}
 	if displayName == elementName && !strings.Contains(elementName, " ") {
-		aParams.InnerHtml = template.HTML(helpers.WrapAsCode("<" + displayName + ">"))
+		aParams.InnerHtml = template.HTML(preprocessor_helpers.WrapAsCode("<" + displayName + ">"))
 	} else {
 		aParams.Text = displayName
 	}

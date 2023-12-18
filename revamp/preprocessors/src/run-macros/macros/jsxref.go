@@ -4,7 +4,7 @@ import (
 	"errors"
 	"html/template"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
@@ -27,16 +27,16 @@ func parseJsxrefArgs(args string) (string, string, string, bool, error) {
 	case 0:
 		return "", "", "", false, errors.New("no arguments")
 	case 4:
-		ignoreWrap = helpers.UnwrapBoolean(argSlice[3])
+		ignoreWrap = preprocessor_helpers.UnwrapBoolean(argSlice[3])
 		fallthrough
 	case 3:
-		anchor = strings.TrimPrefix(helpers.UnwrapString(argSlice[2]), "#")
+		anchor = strings.TrimPrefix(preprocessor_helpers.UnwrapString(argSlice[2]), "#")
 		fallthrough
 	case 2:
-		displayName = helpers.UnwrapString(argSlice[1])
+		displayName = preprocessor_helpers.UnwrapString(argSlice[1])
 		fallthrough
 	case 1:
-		apiName = helpers.UnwrapString(argSlice[0])
+		apiName = preprocessor_helpers.UnwrapString(argSlice[0])
 	default:
 		return "", "", "", false, errors.New("too many arguments")
 	}
@@ -76,7 +76,7 @@ func jsxref(env *environment.Environment, reg *registry.Registry, args string) (
 	if ignoreWrap {
 		aParams.Text = displayName
 	} else {
-		aParams.InnerHtml = template.HTML(helpers.WrapAsCode(displayName))
+		aParams.InnerHtml = template.HTML(preprocessor_helpers.WrapAsCode(displayName))
 	}
 	aHtml, err := renderhtml.RenderA(&aParams)
 	if err != nil {

@@ -1,6 +1,6 @@
 package environment
 
-import "webdoky3/revamp/preprocessors/src/helpers"
+import "webdoky3/revamp/helpers"
 
 type Environment struct {
 	Content     *string

@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	"webdoky3/revamp/helpers"
 	"webdoky3/revamp/preprocessors/src/helpers/l10n"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/preprocessor"

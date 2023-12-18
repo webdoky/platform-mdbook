@@ -1,9 +1,9 @@
-package helpers_test
+package preprocessor_helpers_test
 
 import (
 	"regexp"
 	"testing"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 )
 
 func TestReplaceAllStringSubmatchFunc(t *testing.T) {
@@ -47,7 +47,7 @@ func TestReplaceAllStringSubmatchFunc(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		got := helpers.ReplaceAllStringSubmatchFunc(test.re, test.str, test.repl)
+		got := preprocessor_helpers.ReplaceAllStringSubmatchFunc(test.re, test.str, test.repl)
 		if got != test.want {
 			t.Errorf("ReplaceAllStringSubmatchFunc(%q, %q, f) = %q, want %q", test.re, test.str, got, test.want)
 		}

@@ -4,7 +4,7 @@ import (
 	"log"
 	"regexp"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/macros"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
@@ -23,7 +23,7 @@ func (mr *MacrosRunner) lookupMacro(macroName string) func(*environment.Environm
 
 func (mr *MacrosRunner) Run(markdownCode string) string {
 
-	return helpers.ReplaceAllStringSubmatchFunc(MACRO_REGEXP, markdownCode, func(match []string) string {
+	return preprocessor_helpers.ReplaceAllStringSubmatchFunc(MACRO_REGEXP, markdownCode, func(match []string) string {
 		macroName := match[1]
 		macroArgs := match[2]
 		macro := mr.lookupMacro(macroName)

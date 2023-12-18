@@ -4,7 +4,8 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	"webdoky3/revamp/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	"webdoky3/revamp/preprocessors/src/preprocessor"
 )
 
@@ -23,7 +24,7 @@ func createSummary(book *preprocessor.Book, context *preprocessor.Context) (*pre
 	summaryContent := "# Зміст\n\n"
 	var traverseSummaryItem func(summaryItem *SummaryItem, depth int)
 	traverseSummaryItem = func(summaryItem *SummaryItem, depth int) {
-		summaryContent += helpers.GetIndentation(depth) + "- [" + helpers.EscapeForMarkdown(summaryItem.title) + "](./" + summaryItem.path + ")\n"
+		summaryContent += preprocessor_helpers.GetIndentation(depth) + "- [" + helpers.EscapeForMarkdown(summaryItem.title) + "](./" + summaryItem.path + ")\n"
 		log.Println("Traversing summary item: " + summaryItem.path)
 		for _, subItem := range summaryItem.sub_items {
 			traverseSummaryItem(subItem, depth+1)

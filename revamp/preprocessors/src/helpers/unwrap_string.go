@@ -1,4 +1,4 @@
-package helpers
+package preprocessor_helpers
 
 import "strings"
 

@@ -56,6 +56,10 @@ func main() {
 		log.Fatal(err)
 	}
 	md := strings.Replace(template, "{{CHANGELOG}}", result, 1)
+	md, err = populate_links(md)
+	if err != nil {
+		log.Fatal(err)
+	}
 	// Write md to content/files/uk/index.md file
 	err = os.WriteFile("content/files/uk/index.md", []byte(md), 0644)
 	if err != nil {

@@ -3,7 +3,7 @@ package macros
 import (
 	"errors"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	"webdoky3/revamp/preprocessors/src/helpers/l10n"
 	renderhtml "webdoky3/revamp/preprocessors/src/helpers/render_html"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
@@ -17,13 +17,13 @@ func parseRfcArgs(args string) (string, string, string, error) {
 		return "", "", "", errors.New("no arguments")
 	}
 	if len(argSlice) >= 1 {
-		id = helpers.UnwrapString(argSlice[0])
+		id = preprocessor_helpers.UnwrapString(argSlice[0])
 	}
 	if len(argSlice) >= 2 {
-		text = ": " + helpers.UnwrapString(argSlice[1])
+		text = ": " + preprocessor_helpers.UnwrapString(argSlice[1])
 	}
 	if len(argSlice) >= 3 {
-		section = helpers.UnwrapString(argSlice[2])
+		section = preprocessor_helpers.UnwrapString(argSlice[2])
 	}
 	return id, text, section, nil
 }

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 	"strings"
-	"webdoky3/revamp/preprocessors/src/helpers"
+	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 	"webdoky3/revamp/preprocessors/src/run-macros/environment"
 	"webdoky3/revamp/preprocessors/src/run-macros/registry"
 )
@@ -16,7 +16,7 @@ func parseGlossaryArgs(args string) (string, string, error) {
 	argSlice := strings.Split(args, ",")
 	// If the args string is empty, return an empty slice
 	for i, arg := range argSlice {
-		argSlice[i] = helpers.UnwrapString(arg)
+		argSlice[i] = preprocessor_helpers.UnwrapString(arg)
 	}
 	if len(argSlice) == 1 {
 		return argSlice[0], "", nil
