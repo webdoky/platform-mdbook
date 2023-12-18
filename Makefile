@@ -31,8 +31,8 @@ build: book book/interactive-examples book/live-samples book/robots.txt
 content:
 	git submodule add git@github.com:webdoky/content.git ./content
 
-content/files/uk/index.md: src/index-template.md
-	cp ./src/index-template.md ./content/files/uk/index.md
+content/files/uk/index.md: content/CHANGELOG.md revamp/exe/index src/index-template.md
+	./revamp/exe/index
 
 content/files/uk/SUMMARY.md: revamp/exe/summary
 	./revamp/exe/summary
@@ -42,7 +42,7 @@ clean:
 
 deploy: build revamp/exe/populate-algolia
 	./revamp/exe/populate-algolia
-	exit 1
+	. ${HOME}/.nvm/nvm.sh && nvm use 18 && npx surge --project ./book --domain webdoky3.surge.sh
 
 install:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -69,6 +69,9 @@ revamp/exe/summary: revamp/generators/src/summary
 
 revamp/exe/fix-interactive-examples: revamp/postprocessors/src/fix-interactive-examples
 	cd revamp/postprocessors/src/fix-interactive-examples && go build -o ../../../exe/
+
+revamp/exe/index: revamp/generators/src/index
+	cd revamp/generators/src/index && go build -o ../../../exe/
 
 revamp/exe/move-media: revamp/postprocessors/src/move-media
 	cd revamp/postprocessors/src/move-media && go build -o ../../../exe/
