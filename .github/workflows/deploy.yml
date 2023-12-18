@@ -126,6 +126,9 @@ jobs:
                   path: book
             - run: chmod +x ./revamp/exe/populate-algolia
             - run: ./revamp/exe/populate-algolia
+              env:
+                  ALGOLIA_APP_ID: ${{ env.ALGOLIA_APP_ID }}
+                  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
     deploy:
         needs: [build]
         runs-on: ubuntu-latest

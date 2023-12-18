@@ -23,7 +23,7 @@ func populate_links(md string) (string, error) {
 					return "", err
 				}
 			} else {
-				line = strings.ReplaceAll(line, match[1], "["+helpers.EscapeForMarkdown(frontmatterData.Title)+"](/uk/docs/"+frontmatterData.Slug+")")
+				line = strings.ReplaceAll(line, match[1], "["+frontmatterData.Title+"](/uk/docs/"+frontmatterData.Slug+")")
 			}
 		}
 		result += line + "\n"
