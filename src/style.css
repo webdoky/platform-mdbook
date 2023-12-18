@@ -193,7 +193,7 @@ a[href*="//"]::before {
 .notecard.deprecated {
     --note-background: var(--background-warning);
     --note-theme: var(--icon-warning);
-    border-left-color: red;
+    border-left-color: #E23645;
 }
 
 .hljs {

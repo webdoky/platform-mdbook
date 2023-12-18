@@ -12,7 +12,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-var NO_GO_TAGS []string = []string{"#Формальний-синтаксис", "#Специфікації", "script", "style", "noscript", "table", "pre", "ul", "ol", "h1", "blockquote", ".notecard"}
+var NO_GO_TAGS []string = []string{"#Формальний-синтаксис", "#Специфікації", "script", "style", "noscript", "table", "pre", "ul", "ol", "h1", "blockquote", ".notecard", ".bc-data"}
 
 var CUT_MARKERS []string = []string{"#Дивіться-також", "#Автори-статті", "#Автори-перекладу"}
 
