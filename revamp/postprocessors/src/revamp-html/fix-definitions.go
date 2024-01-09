@@ -42,7 +42,7 @@ func fixDefinitions(doc *goquery.Document) error {
 				if nodeHtml == "" {
 					nodeHtml = selection.Text()
 				}
-				log.Printf("selection, %d: %s", selection.Nodes[0].Type, nodeHtml)
+				// log.Printf("selection, %d: %s", selection.Nodes[0].Type, nodeHtml)
 				if selection.Nodes[0].Type != html.ElementNode || !selection.Is("ul") {
 					term += nodeHtml
 				} else {
