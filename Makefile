@@ -12,8 +12,9 @@ endif
 
 book: book/uk interactive-examples/docs
 
-book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md original-content revamp/exe/move-media revamp/exe/format-links revamp/exe/inject-authors revamp/exe/rewire-paths revamp/exe/run-macros revamp/exe/strip-frontmatter  revamp/exe/writer src
+book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md original-content revamp/exe/move-media revamp/exe/format-links revamp/exe/inject-authors revamp/exe/revamp-html revamp/exe/rewire-paths revamp/exe/run-macros revamp/exe/strip-frontmatter  revamp/exe/writer src
 	mdbook build
+	./revamp/exe/revamp-html
 	./revamp/exe/move-media
 
 book/interactive-examples: interactive-examples/docs revamp/exe/fix-interactive-examples
@@ -84,6 +85,9 @@ revamp/exe/format-links: revamp/preprocessors/src/format-links revamp/preprocess
 
 revamp/exe/inject-authors: revamp/preprocessors/src/inject-authors revamp/preprocessors/src/preprocessor
 	cd revamp/preprocessors/src/inject-authors && go build -o ../../../exe/
+
+revamp/exe/revamp-html: revamp/postprocessors/src/revamp-html revamp/postprocessors/src/helpers
+	cd revamp/postprocessors/src/revamp-html && go build -o ../../../exe/
 
 revamp/exe/rewire-paths: revamp/preprocessors/src/rewire-paths revamp/preprocessors/src/helpers revamp/preprocessors/src/preprocessor
 	cd revamp/preprocessors/src/rewire-paths && go build -o ../../../exe/

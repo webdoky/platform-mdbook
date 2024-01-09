@@ -1,4 +1,4 @@
-package preprocessor_helpers
+package helpers
 
 import (
 	"html"
@@ -6,11 +6,14 @@ import (
 	"strings"
 
 	"github.com/fre5h/transliteration-go"
+	strip "github.com/grokify/html-strip-tags-go"
 )
 
 var CHARACTERS_TO_REMOVE = regexp.MustCompile(`[^a-z0-9-]`)
 
+
 func GetSectionId(text string) string {
+	text = strip.StripTags(text)
 	text = html.UnescapeString(text)
 	text = transliteration.UkrToLat(text)
 	text = strings.ToLower(text)

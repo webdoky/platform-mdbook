@@ -5,6 +5,7 @@ import (
 	"log"
 	"strconv"
 	"strings"
+	"webdoky3/revamp/helpers"
 	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
 )
 
@@ -36,7 +37,7 @@ func parseEmbedlivesampleArgs(args string) (string, string, string, string, erro
 	default:
 		return "", "", "", "", errors.New("too many arguments")
 	}
-	parentId = preprocessor_helpers.GetSectionId(parentId)
+	parentId = helpers.GetSectionId(parentId)
 	if height != "" {
 		// If height is less than MIN_HEIGHT, set it to MIN_HEIGHT
 		heightInt, err := strconv.Atoi(height)

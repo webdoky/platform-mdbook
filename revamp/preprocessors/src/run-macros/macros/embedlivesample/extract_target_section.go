@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 	"strings"
-	preprocessor_helpers "webdoky3/revamp/preprocessors/src/helpers"
+	"webdoky3/revamp/helpers"
 )
 
 func extractTargetSection(content string, parentId string) (string, string, error) {
@@ -34,7 +34,7 @@ func extractTargetSection(content string, parentId string) (string, string, erro
 			firstSpaceIndex := strings.Index(line, " ")
 			depth = firstSpaceIndex
 			headerText = strings.TrimSpace(line[firstSpaceIndex+1:])
-			if parentId == "" || preprocessor_helpers.GetSectionId(headerText) == parentId {
+			if parentId == "" || helpers.GetSectionId(headerText) == parentId {
 				i = strings.Index(content, line) + len(line)
 				break
 			}

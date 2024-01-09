@@ -53,6 +53,8 @@ jobs:
               run: cd revamp/preprocessors/src/writer && go build -o ../../../../exe/
             - name: Build fix-interactive-examples postprocessor
               run: cd revamp/postprocessors/src/fix-interactive-examples && go build -o ../../../../exe/
+            - name: Build revamp-html postprocessor
+              run: cd revamp/postprocessors/src/revamp-html && go build -o ../../../../exe/
             - name: Build move-media postprocessor
               run: cd revamp/postprocessors/src/move-media && go build -o ../../../../exe/
             - name: Build populate-algolia postprocessor
@@ -95,6 +97,7 @@ jobs:
                   name: interactive-examples
                   path: book/interactive-examples
             - run: chmod +x ./revamp/exe/fix-interactive-examples && ./revamp/exe/fix-interactive-examples
+            - run: chmod +x ./revamp/exe/revamp-html && ./revamp/exe/revamp-html
             - run: chmod +x ./revamp/exe/move-media && ./revamp/exe/move-media
             - run: sudo apt install rename
             # Recursively replace all asterisks in folder names with "_asterisk_"

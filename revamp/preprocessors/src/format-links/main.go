@@ -62,7 +62,7 @@ func getClassForLink(href string) string {
 		}
 	} else {
 		classes = append(classes, "internal-link")
-		if !bookHasPath(href + "/index.md") {
+		if !strings.HasPrefix(href, "#") && !bookHasPath(href+"/index.md") {
 			log.Println("Missing link: " + href)
 			classes = append(classes, "missing-link")
 		}

@@ -30,6 +30,10 @@ func copyFileToFolder(filePath string, folderPath string) error {
 func replaceInFile(filePath string, old string, new string) error {
 	file, err := os.ReadFile(filePath)
 	if err != nil {
+		// if file doesn't exist, return nil
+		if os.IsNotExist(err) {
+			return nil
+		}
 		return err
 	}
 	fileAsString := string(file)
@@ -43,6 +47,9 @@ func processFile(path string, info os.FileInfo, err error) error {
 		return err
 	}
 	if info.Name() == "." || info.Name() == ".." {
+		return nil
+	}
+	if strings.HasSuffix(path, ".html") {
 		return nil
 	}
 	// fullFilePath := path + "/" + info.Name()
