@@ -275,3 +275,35 @@ screen and (min-width: 1008px) {
 .example-bad {
     background-color: color-mix(in oklab, red 15%, var(--bg))
 }
+
+.visually-hidden {
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    border: 0 !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+.icon {
+    --size: 1.8rem;
+    background-color: var(--icons);
+    display: inline-block;
+    flex-shrink: 0;
+    height: var(--size);
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    vertical-align: middle;
+    width: var(--size);
+}
+
+.icon.icon-experimental {
+    mask-image: url(/static/experimental.svg);
+}

@@ -91,6 +91,7 @@ jobs:
             - run: ls ./book
             - run: ls .
             - run: cp -r ./live-samples ./book/live-samples
+            - run: cp -r ./static ./book/static
             - run: cp ./src/robots.txt ./book/robots.txt
             - uses: actions/download-artifact@v3
               with:

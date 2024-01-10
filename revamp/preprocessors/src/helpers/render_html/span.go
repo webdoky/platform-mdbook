@@ -10,6 +10,7 @@ import (
 var tSpan *template.Template
 
 type SpanParams struct {
+	Class template.HTMLAttr
 	Style template.HTMLAttr
 	Text  string
 }

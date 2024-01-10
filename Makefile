@@ -10,9 +10,12 @@ endif
 .PHONY: build clean deploy install rebuild serve
 .SHELLFLAGS += -e
 
-book: book/live-samples book/uk
+book: book/live-samples book/static book/uk
 
-book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md original-content revamp/exe/move-media revamp/exe/format-links revamp/exe/inject-authors revamp/exe/revamp-html revamp/exe/rewire-paths revamp/exe/run-macros revamp/exe/strip-frontmatter  revamp/exe/writer src
+book/static: static
+	cp -r static ./book/static
+
+book/uk: book.toml content content/files/uk/index.md content/files/uk/SUMMARY.md original-content revamp/exe/move-media revamp/exe/format-links revamp/exe/inject-authors revamp/exe/revamp-html revamp/exe/rewire-paths revamp/exe/run-macros revamp/exe/strip-frontmatter  revamp/exe/writer src/script.js src/style.css
 	mdbook build
 	./revamp/exe/revamp-html
 	./revamp/exe/move-media
