@@ -15,6 +15,7 @@ type IframeParams struct {
 	Height template.HTMLAttr
 	Src    template.HTMLAttr
 	Title  template.HTMLAttr
+	Width  template.HTMLAttr
 }
 
 func RenderIframe(params *IframeParams) (string, error) {
