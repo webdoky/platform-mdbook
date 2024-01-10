@@ -16,7 +16,7 @@ import (
 var UKRAINIAN_MARKERS = []string{"//uk.", ".ua", "hl=uk"}
 
 var MARKDOWN_LINK_REGEX = regexp.MustCompile(`([^!])\[([^\[\]]+)]\(([^\s\(\)\[\]]+)\)`)
-var HTML_LINK_REGEX = regexp.MustCompile(`<a[^>]*\shref="([^>"]+)"[^>]*>`)
+var HTML_LINK_REGEX = regexp.MustCompile(`<a[^>]*\shref="([^>"\s]+)"[^>]*>`)
 
 func checkLinkForMissing(href string) {
 	if strings.HasPrefix(href, "http") {
@@ -62,9 +62,11 @@ func getClassForLink(href string) string {
 		}
 	} else {
 		classes = append(classes, "internal-link")
-		if !strings.HasPrefix(href, "#") && !bookHasPath(href+"/index.md") {
-			log.Println("Missing link: " + href)
-			classes = append(classes, "missing-link")
+		if href != "" {
+			if !bookHasPath(href + "/index.md") {
+				log.Println("Missing link: " + href)
+				classes = append(classes, "missing-link")
+			}
 		}
 	}
 	return strings.Join(classes, " ")

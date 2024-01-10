@@ -30,5 +30,6 @@ var MacrosIndex = map[string]func(*environment.Environment, *registry.Registry, 
 	"listsubpages":           listsubpages,
 	"non-standard_header":    non_standard_header,
 	"rfc":                    rfc,
+	"seecompattable":         seecompattable,
 	"svgelement":             svgelement.Svgelement,
 }
