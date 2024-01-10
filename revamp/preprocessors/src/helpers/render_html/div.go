@@ -12,7 +12,7 @@ var tDiv *template.Template
 
 type DivParams struct {
 	Class     string
-	Data      map[string]template.HTMLAttr
+	Data      map[template.HTMLAttr]template.HTMLAttr
 	InnerHtml template.HTML
 	Text      string
 }

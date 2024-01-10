@@ -12,9 +12,9 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-var NO_GO_TAGS []string = []string{"#Формальний-синтаксис", "#Специфікації", "script", "style", "noscript", "table", "pre", "ul", "ol", "h1", "blockquote", ".notecard", ".bc-data"}
+var NO_GO_TAGS []string = []string{"#formalnyi-syntaksys", "#spetsyfikatsii", "script", "style", "noscript", "table", "pre", "ul", "ol", "h1", "blockquote", ".notecard", ".bc-data"}
 
-var CUT_MARKERS []string = []string{"#Дивіться-також", "#Автори-статті", "#Автори-перекладу"}
+var CUT_MARKERS []string = []string{"#dyvitsia-takozh", "#avtory-statti", "#avtory-perekladu"}
 
 // Removes all html tags from the given html string
 func extractTextFromHtml(htmlCode []byte) (string, string, error) {

@@ -23,10 +23,10 @@ func Compat(env *environment.Environment, reg *registry.Registry, args string) (
 		}
 		queryElement, err := renderhtml.RenderDiv(&renderhtml.DivParams{
 			Class: "bc-data",
-			Data: map[string]template.HTMLAttr{
-				"multiple": template.HTMLAttr(multiple),
-				"query":    template.HTMLAttr(query),
-				"depth":    template.HTMLAttr("1"),
+			Data: map[template.HTMLAttr]template.HTMLAttr{
+				template.HTMLAttr("multiple"): template.HTMLAttr(multiple),
+				template.HTMLAttr("query"):    template.HTMLAttr(query),
+				template.HTMLAttr("depth"):    template.HTMLAttr("1"),
 			},
 			Text: "If you're able to see this, something went wrong on this page.",
 		})
