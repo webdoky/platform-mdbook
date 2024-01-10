@@ -273,5 +273,5 @@ screen and (min-width: 1008px) {
 }
 
 .example-bad {
-    background-color: color-mix(in srgb, red 15%, var(--bg));
+    background-color: color-mix(in oklab, red 15%, var(--bg))
 }

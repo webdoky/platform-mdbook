@@ -13,15 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const nolintCodeBlocks = document.querySelectorAll('code[class*="language-"][class*="-nolint"]');
-  nolintCodeBlocks.forEach((codeBlock) => {
-    codeBlock.classList.forEach((className) => {
-      if (className.endsWith('-nolint')) {
-        codeBlock.classList.remove(className);
-        codeBlock.classList.add(className.slice(0, -'-nolint'.length));
-      }
-    });
-  });
+  //   const nolintCodeBlocks =
+  // document.querySelectorAll('code[class*="language-"][class*="-nolint"]');
+  //   nolintCodeBlocks.forEach((codeBlock) => {
+  //     codeBlock.classList.forEach((className) => {
+  //       if (className.endsWith('-nolint')) {
+  //         codeBlock.classList.remove(className);
+  //         codeBlock.classList.add(className.slice(0, -'-nolint'.length));
+  //       }
+  //     });
+  //   });
 
   const leftButtons = document.querySelector('.left-buttons');
   const searchBox = document.createElement('div');
