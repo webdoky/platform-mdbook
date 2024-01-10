@@ -34,6 +34,14 @@ func main() {
 		if err != nil {
 			return err
 		}
+		err = fixCodeLinks(page)
+		if err != nil {
+			return err
+		}
+		err = fixHljs(page)
+		if err != nil {
+			return err
+		}
 		// Write page back into file
 		html, err := page.Html()
 		if err != nil {

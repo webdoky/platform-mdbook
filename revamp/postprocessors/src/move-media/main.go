@@ -74,7 +74,7 @@ func processFile(path string, info os.FileInfo, err error) error {
 	if err != nil {
 		return err
 	}
-	log.Println("Moving " + path + " to " + targetFolder)
+	// log.Println("Moving " + path + " to " + targetFolder)
 	err = copyFileToFolder(path, targetFolder)
 	if err != nil {
 		return err

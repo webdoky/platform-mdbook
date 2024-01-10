@@ -271,3 +271,7 @@ screen and (min-width: 1008px) {
         height: 631px;
     }
 }
+
+.example-bad {
+    background-color: color-mix(in srgb, red 15%, var(--bg));
+}

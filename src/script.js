@@ -94,4 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
   ]);
 
   search.start();
+
+  document.querySelectorAll('.hljs.example-bad').forEach((element) => {
+    element.parentElement.querySelector('.buttons .clip-button').classList.add('hidden');
+  });
 });
