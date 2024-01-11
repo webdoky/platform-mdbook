@@ -15,7 +15,7 @@
 
 .missing-link:hover,
 .missing-link>.hljs:hover {
-    color: red !important;
+    color: var(--fg) !important;
 }
 
 a[href*="//"]::before {
@@ -305,4 +305,17 @@ mark.fade-out {
 #hits .ais-Snippet em {
     font-weight: bold;
     font-style: normal;
+}
+
+.badge,
+kbd {
+    color: color-mix(in oklab, var(--fg) 66%, var(--bg) 33%);
+}
+
+.badge {
+    border: 1px solid var(--quote-border);
+    border-radius: 4rem;
+    font-size: 1.3rem;
+    padding: 0.125rem 0.375rem;
+    white-space: nowrap;
 }
