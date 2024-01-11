@@ -13,54 +13,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  //   const nolintCodeBlocks =
-  // document.querySelectorAll('code[class*="language-"][class*="-nolint"]');
-  //   nolintCodeBlocks.forEach((codeBlock) => {
-  //     codeBlock.classList.forEach((className) => {
-  //       if (className.endsWith('-nolint')) {
-  //         codeBlock.classList.remove(className);
-  //         codeBlock.classList.add(className.slice(0, -'-nolint'.length));
-  //       }
-  //     });
-  //   });
-
   const leftButtons = document.querySelector('.left-buttons');
+  const menuBar = document.querySelector('.menu-bar');
+  const searchButton = document.createElement('button');
+  searchButton.type = 'button';
+  searchButton.classList.add('icon-button');
+  searchButton.title = 'Пошук. (Швидка клавіша: ш)';
+  searchButton.setAttribute('aria-label', 'Показати пошук');
+  searchButton.setAttribute('aria-expanded', 'false');
+  searchButton.setAttribute('aria-keyshortcuts', 'ш');
+  searchButton.setAttribute('aria-controls', 'searchbar');
+  const searchIcon = document.createElement('i');
+  searchIcon.classList.add('fa', 'fa-search');
+  searchButton.append(searchIcon);
+  leftButtons.append(searchButton);
+  const searchWrapper = document.createElement('div');
+  searchWrapper.id = 'search-wrapper';
   const searchBox = document.createElement('div');
-  searchBox.id = 'searchbox';
+  searchBox.id = 'searchbar-outer';
+  searchBox.classList.add('searchbar-outer');
+  searchWrapper.classList.add('hidden');
+  searchWrapper.append(searchBox);
+
+  const searchresultsOuter = document.createElement('div');
+  searchresultsOuter.id = 'searchresults-outer';
+  searchresultsOuter.classList.add('searchresults-outer');
+  searchWrapper.append(searchresultsOuter);
+
   const hits = document.createElement('div');
   hits.id = 'hits';
+  searchresultsOuter.append(hits);
   const closeButton = document.createElement('button');
   closeButton.classList.add('close-button');
-  leftButtons.append(searchBox, hits, closeButton);
+  menuBar.parentElement.insertBefore(searchWrapper, menuBar.nextElementSibling);
+  //   leftButtons.append(searchBox, hits, closeButton);
 
   function activateSearch() {
-    searchBox.classList.add('active');
+    searchButton.setAttribute('aria-expanded', 'true');
+    searchButton.setAttribute('aria-label', 'Сховати пошук');
+    // searchBox.classList.add('active');
+    searchWrapper.classList.remove('hidden');
     hits.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.querySelector('.ais-SearchBox-input').focus();
+    // document.body.style.overflow = 'hidden';
   }
 
   function deactivateSearch() {
-    searchBox.classList.remove('active');
+    searchButton.setAttribute('aria-expanded', 'false');
+    searchButton.setAttribute('aria-label', 'Показати пошук');
+    // searchBox.classList.remove('active');
+    searchWrapper.classList.add('hidden');
     hits.classList.remove('active');
-    document.body.style.overflow = '';
+    // document.body.style.overflow = '';
   }
 
-  function handleClick(event) {
-    // if clicked outside of the search box
-    if (!event.target.closest('#searchbox') && !event.target.closest('.hits')) {
-      // hide the search box
+  function triggerSearch(event) {
+    if (event.currentTarget.getAttribute('aria-expanded') === 'true') {
       deactivateSearch();
     } else {
-      // show the search box
       activateSearch();
     }
   }
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'i') {
+      //   event.preventDefault();
+      triggerSearch(event);
+    }
+  });
+
+  searchButton.addEventListener('click', triggerSearch);
   closeButton.addEventListener('click', (event) => {
     event.stopPropagation();
     deactivateSearch();
   });
-
-  document.addEventListener('click', handleClick);
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
@@ -74,21 +99,30 @@ document.addEventListener('DOMContentLoaded', () => {
     indexName: 'articles',
     insights: true,
     searchClient,
+    searchFunction(helper) {
+      searchresultsOuter.style.display = helper.state.query === '' ? 'none' : '';
+
+      helper.search();
+    },
   });
 
   search.addWidgets([
     window.instantsearch.widgets.searchBox({
-      container: '#searchbox',
+      container: searchBox,
+      cssClasses: {
+        form: 'searchbar-outer',
+      },
     }),
 
     window.instantsearch.widgets.hits({
-      container: '#hits',
+      container: hits,
       templates: {
+        empty: 'Нічого не знайдено на тему {{query}}.',
         item(hit, { html, components }) {
           return html`
-            <a href="/uk/docs/${hit.slug}"><h2>${components.Highlight({ hit, attribute: 'title' })}</h2>
-            <p>${components.Snippet({ hit, attribute: 'slug' })}</p></a>
-          `;
+                    <a href="/uk/docs/${hit.slug}">${components.Highlight({ hit, attribute: 'title' })}</a>
+                    ${components.Snippet({ classNames: { root: 'teaser' }, hit, attribute: 'text' })}
+                  `;
         },
       },
     }),

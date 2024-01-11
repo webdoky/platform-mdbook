@@ -10,12 +10,12 @@
 
 .missing-link,
 .missing-link>.hljs {
-    color: var(--sidebar-non-existant) !important;
+    color: color-mix(in oklab, var(--links) 66%, red 66%) !important;
 }
 
 .missing-link:hover,
 .missing-link>.hljs:hover {
-    color: var(--searchbar-fg) !important;
+    color: red !important;
 }
 
 a[href*="//"]::before {
@@ -54,94 +54,8 @@ a[href*="//"]::before {
     height: 385px;
 }
 
-.ais-SearchBox-form {
-    font-size: 2rem;
-    height: 50px;
-}
-
-#hits {
-    border-color: var(--searchresults-border-color);
-    border-style: solid;
-    border-width: 1px;
-    overflow: auto;
-    top: 50px;
-    max-height: calc(100vh - 50px);
-    position: fixed;
-    transition: cubic-bezier(1, 0, 0, 1) 0.5s;
-    width: 100vw;
-}
-
-#hits:not(.active) {
-    max-height: 0px;
-}
-
-.ais-Hits-item,
-.ais-InfiniteHits-item {
-    color: var(--fg);
-    background-color: var(--searchresults-li-bg);
-    padding: 0;
-}
-
-.ais-Hits-item>a,
-.ais-InfiniteHits-item>a {
-    padding: 1.5rem;
-    text-decoration: none;
-    width: 100%;
-}
-
-.ais-Hits-item>a:hover,
-.ais-InfiniteHits-item>a:hover {
-    text-decoration: underline;
-}
-
-#searchbox.active {
-    position: fixed;
-    right: 50px;
-    left: 0;
-    z-index: 20;
-}
-
-.close-button {
-    display: none;
-    height: 50px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 50px;
-}
-
-.close-button::before {
-    content: "×";
-    font-size: 2rem;
-    line-height: 50px;
-    text-align: center;
-}
-
-#hits.active+.close-button {
-    display: block;
-}
-
-.ais-SearchBox-form::before {
-    height: 16px;
-    width: 16px;
-}
-
-.ais-SearchBox-input {
-    background-color: var(--searchbar-bg);
-    border-color: var(--searchbar-border-color);
-    box-shadow: var(--searchbar-shadow-color) 0 1px 4px 0 inset;
-    color: var(--searchbar-fg);
-    padding-left: 4rem;
-}
-
 #formalnyi-syntaksys+pre {
     white-space: initial;
-}
-
-
-.ais-Highlight-nonHighlighted {
-    background-color: transparent;
-    color: currentColor;
 }
 
 .sample-code-frame {
@@ -306,4 +220,89 @@ screen and (min-width: 1008px) {
 
 .icon.icon-experimental {
     mask-image: url(/static/experimental.svg);
+}
+
+.searchbar-outer {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--content-max-width);
+    height: auto;
+}
+
+#searchbar {
+    width: 100%;
+    margin: 5px auto 0px auto;
+    padding: 10px 16px;
+    transition: box-shadow 300ms ease-in-out;
+    border: 1px solid var(--searchbar-border-color);
+    border-radius: 3px;
+    background-color: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+#searchbar:focus,
+#searchbar.active {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+.ais-SearchBox-input {
+    width: 100%;
+    margin: 5px auto 0px auto;
+    padding: 10px 16px;
+    transition: box-shadow 300ms ease-in-out;
+    border: 1px solid var(--searchbar-border-color);
+    border-radius: 3px;
+    background-color: var(--searchbar-bg);
+    color: var(--searchbar-fg);
+}
+
+.ais-SearchBox-input :focus,
+.ais-SearchBox-input .active {
+    box-shadow: 0 0 3px var(--searchbar-shadow-color);
+}
+
+
+#hits a {
+    text-decoration: none;
+}
+
+mark {
+    border-radius: 2px;
+    padding: 0 3px 1px 3px;
+    margin: 0 -3px -1px -3px;
+    background-color: var(--search-mark-bg);
+    transition: background-color 300ms linear;
+    cursor: pointer;
+}
+
+mark.fade-out {
+    background-color: rgba(0, 0, 0, 0) !important;
+    cursor: auto;
+}
+
+#hits {
+    list-style: none;
+    padding-left: 20px;
+}
+
+#hits li {
+    margin: 10px 0px;
+    padding: 2px;
+    border-radius: 2px;
+}
+
+#hits li.focus {
+    background-color: var(--searchresults-li-bg);
+}
+
+#hits .ais-Snippet {
+    display: block;
+    clear: both;
+    margin: 5px 0 0 20px;
+    font-size: 0.8em;
+}
+
+#hits .ais-Snippet em {
+    font-weight: bold;
+    font-style: normal;
 }
