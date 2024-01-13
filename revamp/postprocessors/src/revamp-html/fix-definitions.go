@@ -27,7 +27,13 @@ func fixDefinitions(doc *goquery.Document) error {
 	pseudoDls := []*goquery.Selection{}
 	lis.Each(func(i int, li *goquery.Selection) {
 		// if li starts with ": "
-		if !strings.HasPrefix(li.Text(), ": ") {
+		text := li.Text()
+		if !strings.HasPrefix(strings.TrimSpace(text), ": ") {
+			shortText := text
+			if len(shortText) > 100 {
+				shortText = shortText[0:100]
+			}
+			log.Printf("Does not start with ': ' – %s", shortText)
 			return
 		}
 		pseudoDl := li.Closest("ul").Parent().Closest("ul")
@@ -48,6 +54,7 @@ func fixDefinitions(doc *goquery.Document) error {
 		pseudoDefinitions := pseudoDl.ChildrenFiltered("li")
 		// log.Printf("pseudoDefinitions.Length(): %d", pseudoDefinitions.Length())
 		pseudoDefinitions.Each(func(i int, pseudoDefinition *goquery.Selection) {
+			// log.Printf("pseudoDefinitions, %d, %v", i, pseudoDefinition)
 			// if !pseudoDefinition.Is("li") {
 			// 	mainError = errors.New("pseudoDefinition is not li")
 			// 	return
@@ -62,6 +69,7 @@ func fixDefinitions(doc *goquery.Document) error {
 			contents := pseudoDefinition.Contents()
 			// log.Printf("contents.Length(): %d", contents.Length())
 			contents.Each(func(i int, selection *goquery.Selection) {
+				// log.Printf("contents, %d, %v", i, selection)
 				if !selection.Parent().IsSelection(pseudoDefinition) || selection.IsSelection(pseudoDefinition) {
 					return
 				}
@@ -73,23 +81,15 @@ func fixDefinitions(doc *goquery.Document) error {
 					}
 				}
 				// log.Printf("selection.Get(0).Type: %d", selection.Get(0).Type)
-				// if selection.Get(0).Type == html.ElementNode {
-				// 	log.Printf("selection.Get(0).Data: %s", selection.Get(0).Data)
-				// }
-				// log.Printf("selection, %d: %s", selection.Nodes[0].Type, nodeHtml)
-				if selection.Get(0).Type != html.ElementNode || !selection.Is("ul") {
+				selectionKind := "text"
+				if selection.Get(0).Type == html.ElementNode {
+					selectionKind = selection.Get(0).Data
+					// log.Printf("selection.Get(0).Data: %s", selection.Get(0).Data)
+				}
+				if definition == "" && (selectionKind != "ul") {
 					nodeHtml, err := goquery.OuterHtml(selection)
 					if err != nil {
 						log.Fatal(err)
-					}
-					log.Printf("nodeHtml: '%s'", nodeHtml)
-					if definition != "" {
-						// log.Printf("definition: '%s'", definition)
-						// log.Printf("nodeHtml: '%s'", nodeHtml)
-						if strings.TrimSpace(nodeHtml) != "" {
-							mainError = errors.New("definition is not empty, term: " + term + ", definition: " + definition + ", nodeHtml: " + nodeHtml)
-						}
-						return
 					}
 					if nodeHtml == "" {
 						nodeHtml = selection.Text()
@@ -100,31 +100,36 @@ func fixDefinitions(doc *goquery.Document) error {
 					}
 					term += nodeHtml
 				} else {
-					selection.Find("ul > li").Each(func(i int, li *goquery.Selection) {
-						li.Each(func(i int, textContainer *goquery.Selection) {
-							// textHtml, err := textContainer.Html()
-							// if err != nil {
-							// 	log.Fatal(err)
-							// }
-							if strings.HasPrefix(textContainer.Text(), ": ") {
-								removeColonPrefix(li)
-							} else {
-								li.Find("p").Each(func(i int, p *goquery.Selection) {
-									removeColonPrefix(p)
-								})
-							}
-						})
-
-						liHtml, err := li.Html()
+					lis := selection.Children()
+					if lis.Length() != 1 {
+						definitionPiece, err := goquery.OuterHtml(selection)
 						if err != nil {
 							log.Fatal(err)
 						}
-						if strings.Contains(definition, liHtml) {
-							return
-						}
-						// log.Printf("liHtml #%d: %s", i, liHtml)
-						definition += liHtml
-					})
+						// log.Printf("definitionPiece: '%s'", definitionPiece)
+						definition += definitionPiece
+					} else {
+						lis.Each(func(i int, textContainer *goquery.Selection) {
+							// log.Printf("lis, %d, %v", i, textContainer)
+							if strings.HasPrefix(textContainer.Text(), ": ") {
+								removeColonPrefix(textContainer)
+							} else {
+								textContainer.Find("p").Each(func(i int, p *goquery.Selection) {
+									removeColonPrefix(p)
+								})
+							}
+							liHtml, err := textContainer.Html()
+							if err != nil {
+								log.Fatal(err)
+							}
+							if strings.Contains(definition, liHtml) {
+								return
+							}
+							// log.Printf("liHtml #%d: %s", i, liHtml)
+							definition += liHtml
+						})
+					}
+
 				}
 				processedSelections = append(processedSelections, selection)
 			})
