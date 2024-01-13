@@ -30,6 +30,9 @@ func main() {
 		if err != nil {
 			return err
 		}
+		// if strings.Contains(path, "nth-child") {
+		// 	return errors.New("stop")
+		// }
 		err = fixCyrillicIds(page)
 		if err != nil {
 			return err

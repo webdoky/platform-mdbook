@@ -12,7 +12,7 @@ func fixCodeLinks(doc *goquery.Document) error {
 		text := selection.Text()
 		// log.Printf("text: %s", text)
 		if strings.Contains(text, "&lt;") {
-			selection.SetHtml(text)
+			selection.SetText(html.UnescapeString(text))
 			// log.Printf("text after: %s", selection.Text())
 			title, titleExists := selection.Attr("title")
 			if titleExists {
